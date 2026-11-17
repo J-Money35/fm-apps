@@ -112,7 +112,12 @@
 .rpg .st{flex:1;min-width:0}
 .rpg .kcol{display:flex;flex-direction:column;align-items:center;gap:8px;flex:none}
 .rpg .slop img{display:block;border:3px solid #fff;outline:2px solid #000;image-rendering:auto}
-.rpg .slop figcaption{font:10px Arial;color:#cfe;text-align:center;margin-top:3px}
+.slopbtn{background:none;border:0;padding:0;cursor:zoom-in;display:block}
+.slopbtn:focus-visible{outline:3px dashed #ffd200;outline-offset:3px}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.85);display:grid;place-items:center;cursor:zoom-out}
+.lb[hidden]{display:none}
+.lb img{max-height:92vh;max-width:92vw;width:auto;height:auto;border:4px solid #fff;box-shadow:0 0 40px #000}
+.lbx{position:absolute;top:14px;right:18px;font:bold 22px Arial;color:#fff;background:#000;border:2px solid #fff;border-radius:50%;width:44px;height:44px;cursor:pointer}
 .rpg .nm{font-size:18px}.rpg .nm span{color:#ffd200;margin-left:8px}
 .rpg .cl{color:#9fe8ff}
 .rpg ul{list-style:none;margin-top:6px}
@@ -338,7 +343,7 @@
         <div><img data-sprite="john" alt="" width="72" height="90" title="John Hewitt (centre, left and right)">John Hewitt<br><b>Owner/Founder</b></div></div>
         <p style="text-align:center;font:13px Arial;margin-top:8px">Last Friday the whole team did a trust fall. We do not recommend it for teams of one.</p></div>
       <div class="box rpg"><h3>John's Stats</h3>
-        <div class="menu"><div class="kcol"><figure class="slop"><img src="assets/slop_knight.webp" alt="A.I. artwork of John Hewitt as a heroic knight" width="136" height="204" title="Artist's impression (A.I.)"><figcaption>Artist's impression (A.I.)</figcaption></figure><img data-sprite="knight" alt="Pixel art of John Hewitt as a knight with a bullseye shield" width="136" height="192" title="John Hewitt, Senior Strategist / Marketing Lord (Level 99)"></div>
+        <div class="menu"><div class="kcol"><figure class="slop"><button type="button" class="slopbtn" id="slopBtn" aria-label="Enlarge the knight picture"><img src="assets/slop_knight.webp" alt="A.I. artwork of John Hewitt as a heroic knight" width="136" height="204"></button></figure><img data-sprite="knight" alt="Pixel art of John Hewitt as a knight with a bullseye shield" width="136" height="192" title="John Hewitt, Senior Strategist / Marketing Lord (Level 99)"></div>
         <div class="st"><p class="nm">JOHN <span>LV 99</span></p><p class="cl">Class: Senior Strategist / Marketing Lord</p><p>HP 9999/9999 &nbsp; MP 999/999</p>
         <p class="sec">BASE STATS</p>
         <ul class="base"><li>Strength<i class="over"></i>102</li><li>Synergy<i></i>100</li><li>Humility<i></i>100</li><li>A.I./S.I.<i></i>100</li><li>Hustle<i></i>100</li><li>Charisma<i></i>100</li><li>Vision<i></i>100</li></ul>
@@ -451,6 +456,7 @@
   <div class="bd"><span class="ic" aria-hidden="true">?</span><p>You have reached the bottom of our Web Site.<br><br>Would you like to see the <b>real</b> Finesse Marketing?</p></div>
   <div class="bt"><button type="button" data-a="yes">Yes</button><button type="button" data-a="toobad">No thanks</button></div>
 </div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Knight picture, enlarged" hidden><img src="assets/slop_knight_full.webp" alt="A.I. artwork of John Hewitt as a heroic knight, enlarged" width="768" height="1152"><button type="button" class="lbx" id="lbClose" aria-label="Close">x</button></div>
 <canvas id="flap" aria-hidden="true"></canvas>
 <button class="ear" id="ear" type="button" aria-label="Peel back the old site to see the real one"></button>
 <p class="psst" aria-hidden="true">Down here <span style="font-size:22px;vertical-align:-3px">&#8600;</span></p>
@@ -531,6 +537,10 @@
       if(Math.random()<.2){busy=true;wait(1600).then(()=>{say('You said: "'+[...v].reverse().join('')+'". Is that correct?','b');busy=false});return}bot()});
     HI.hidden=true;setTimeout(()=>{if(!opened)HI.hidden=false},6000);
   })();
+  /* ---------- knight lightbox ---------- */
+  (()=>{const lb=document.getElementById('lb'),btn=document.getElementById('slopBtn');const close=()=>{lb.hidden=true;btn.focus({preventScroll:true})};
+    btn.addEventListener('click',()=>{lb.hidden=false;document.getElementById('lbClose').focus({preventScroll:true})});
+    lb.addEventListener('click',close);addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.hidden)close()})})();
   /* ---------- small gags ---------- */
   document.getElementById('eb').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('ebe').value.trim(),o=document.getElementById('ebs');if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)){o.style.color='#c00000';o.textContent='Please enter your E-mail address.';return}o.style.color='#006000';o.textContent='Thank you!! Your E-Book is on its way. Please check your Junk Mail or Spam folder. It is guaranteed to be in there within the next 3 working weeks.'});
   document.getElementById('si').addEventListener('submit',e=>{e.preventDefault();const a=document.getElementById('sia');a.textContent='Thinking...';setTimeout(()=>{a.innerHTML='It sounds like you need our <b>Premium Consult Package</b>. <a href="#" class="jump">Click here to request a quote today.</a>';a.querySelector('.jump').addEventListener('click',ev=>{ev.preventDefault();jumpTo()})},reduce?400:2600)});
