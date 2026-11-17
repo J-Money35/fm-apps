@@ -33,14 +33,18 @@
 /* ================= the fake-out site (on top) ================= */
 .old{display:none}
 .js.oldon{overflow:hidden}
-.js .old{display:block;position:fixed;inset:0;z-index:60;overflow:auto;overscroll-behavior:contain;color:#000;font-family:"Times New Roman",Times,serif;background-color:#7ec0ee;background-size:128px 96px;image-rendering:pixelated}
+.js .old{display:block;position:fixed;inset:0;z-index:60;overflow:auto;overscroll-behavior:contain;color:#000;font-family:"Times New Roman",Times,serif;background-color:#7ec0ee;background-size:160px 128px;image-rendering:pixelated;animation:drift 40s linear infinite}
+@keyframes drift{to{background-position:160px 128px}}
+@media (prefers-reduced-motion:reduce){.js .old{animation:none}}
 .js .old.gone{display:none}
 .skip96{position:absolute;left:8px;top:8px;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;z-index:5;background:#ff0;color:#000;font:bold 14px Arial}
 .skip96:focus{width:auto;height:auto;padding:8px 12px;clip-path:none}
 .w{max-width:1180px;margin:0 auto;padding:12px 14px 90px;display:grid;grid-template-columns:210px minmax(0,1fr) 230px;gap:10px}
-.mq{grid-column:1/-1;background:#ffff00;color:#d10000;font:bold 16px "Courier New",monospace;white-space:nowrap;overflow:hidden;padding:4px 0;border:3px outset #ffff99}
+.mq{position:relative;padding-right:70px!important;grid-column:1/-1;background:#ffff00;color:#d10000;font:bold 16px "Courier New",monospace;white-space:nowrap;overflow:hidden;padding:4px 0;border:3px outset #ffff99}
 .mq span{display:inline-block;padding-left:100%;animation:mq 16s linear infinite}
 @keyframes mq{to{transform:translateX(-100%)}}
+.mq.paused span{animation-play-state:paused}
+.mqstop{position:absolute;right:4px;top:50%;transform:translateY(-50%);font:bold 11px Arial;background:linear-gradient(#f4f4f4,#bdbdbd);border:2px outset #fff;padding:2px 6px;cursor:pointer;color:#000;min-height:24px}
 .head{grid-column:1/-1;display:flex;align-items:center;justify-content:center;padding:2px 0;background:linear-gradient(#ffffff,#d8f3ff);border:3px ridge #fff}
 .logo96{background:none;border:0;padding:0;cursor:pointer;display:block;width:min(100%,860px)}
 .logo96 svg{display:block;width:100%;height:auto}
@@ -140,12 +144,37 @@
 .rainbow{grid-column:1/-1;text-align:center;font:900 clamp(30px,5vw,64px)/1.05 Impact,"Arial Black",sans-serif;background:linear-gradient(90deg,#ff0000,#ff9900,#ffee00,#33dd33,#00bfff,#3355ff,#cc33ff,#ff0000);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:2px #000;filter:drop-shadow(5px 5px 0 #000);transform:perspective(400px) rotateX(18deg) skewX(-10deg);padding:10px 0 18px;animation:rb 3s linear infinite}
 @keyframes rb{to{background-position:200% 0}}
 @media (prefers-reduced-motion:reduce){.rainbow{animation:none}}
+.fbot{position:fixed;left:14px;bottom:66px;z-index:5;display:flex;align-items:flex-end;gap:8px}
+.fblaunch{position:relative;width:68px;height:68px;border-radius:50%;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 4px 6px rgba(0,0,0,.45));animation:fbwob 2.4s ease-in-out infinite}
+.fblaunch svg{width:100%;height:100%}
+.fbbadge{position:absolute;right:0;top:2px;background:#e00;color:#fff;font:bold 12px Arial;border-radius:10px;padding:1px 6px;border:2px solid #fff}
+.fbhi{max-width:200px;background:#fff;color:#000;font:bold 13px "Comic Sans MS","Comic Sans",cursive;border:2px solid #000;border-radius:12px 12px 12px 0;padding:7px 10px;box-shadow:3px 3px 0 #000;margin-bottom:34px}
+.fbhi[hidden]{display:none}
+@keyframes fbwob{50%{transform:rotate(-8deg) translateY(-3px)}}
+.fbwin{position:fixed;left:14px;bottom:66px;z-index:6;width:min(320px,calc(100vw - 28px));background:#fff;border:2px solid #1046b8;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.45);font:14px/1.4 Arial,sans-serif;color:#000;overflow:hidden}
+.fbwin[hidden]{display:none}
+.fbhead{display:flex;align-items:center;gap:8px;background:linear-gradient(#2f8cff,#1046b8);color:#fff;padding:8px 10px}
+.fbhead svg{width:38px;height:38px;flex:none}
+.fbhead small{font-size:11px}.fbhead .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3f3;margin-right:3px}
+.fbhead .ai{font:bold 10px Arial;background:#ffd200;color:#000;border-radius:3px;padding:1px 4px}
+.fbx{margin-left:auto;background:none;border:0;color:#fff;font:bold 18px Arial;cursor:pointer;min-width:32px;min-height:32px}
+.fbmsgs{height:240px;overflow:auto;padding:10px;background:#f0f4fa;display:flex;flex-direction:column;gap:7px}
+.fbmsgs p{max-width:82%;padding:7px 10px;border-radius:12px;font-size:13.5px}
+.fbmsgs .b{background:#fff;border:1px solid #c9d6ea;align-self:flex-start;border-bottom-left-radius:2px}
+.fbmsgs .u{background:#2f8cff;color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.fbmsgs .sys{align-self:center;background:none;color:#777;font-size:11.5px;font-style:italic}
+.fbmsgs .typing{color:#777;font-style:italic}
+.fbin{display:flex;border-top:1px solid #ccd}
+.fbin input{flex:1;min-width:0;border:0;padding:10px;font:14px Arial;min-height:44px}
+.fbin button{border:0;background:#1046b8;color:#fff;font:bold 13px Arial;padding:0 14px;cursor:pointer;min-height:44px}
+.fbfoot{font:10.5px Arial;color:#777;text-align:center;padding:4px;background:#fff}
+.fbwin.glitch{animation:fbshake .4s linear}
+@keyframes fbshake{20%{transform:translate(-4px,2px) skewX(3deg)}40%{transform:translate(4px,-2px)}60%{transform:translate(-3px,1px) skewX(-2deg)}80%{transform:translate(2px,0)}}
+@media (prefers-reduced-motion:reduce){.fblaunch,.fbwin.glitch{animation:none}}
 .kw{grid-column:1/-1;font:12px/1.5 Arial,sans-serif;color:#2b5d7a;text-align:justify;background:rgba(255,255,255,.55);padding:6px 8px;word-spacing:1px}
 .cookie{position:sticky;bottom:0;z-index:4;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;background:#000;color:#ffff66;font:bold 14px Verdana,Arial,sans-serif;padding:9px;border-top:3px solid #ff00a0}
 .cookie button{font:bold 13px Arial;background:linear-gradient(#fffbe0,#ffcc33);border:2px outset #fff3b0;padding:4px 10px;min-height:34px;cursor:pointer}
 .cookie.hide{display:none}
-.bot{position:fixed;left:14px;bottom:62px;z-index:3;font:bold 13px Verdana,Arial;background:#ff00a0;color:#fff;border:3px outset #ff8ad6;padding:8px 10px;cursor:pointer;min-height:40px}
-.bot+.reply{position:fixed;left:14px;bottom:112px;z-index:3;max-width:240px;font:13px "Comic Sans MS","Comic Sans",cursive;background:#ffffcc;border:2px solid #000;padding:8px;box-shadow:3px 3px 0 #000}
 .spark{position:fixed;z-index:63;width:9px;height:9px;pointer-events:none;background:radial-gradient(#fff,#ffd200 40%,transparent 70%);border-radius:50%;animation:sp .7s ease-out forwards}
 @keyframes sp{to{transform:translateY(18px) scale(.2);opacity:0}}
 /* XP-style pop-ups */
@@ -169,7 +198,7 @@
 .unlocked .psst{display:block;animation:bob 1s ease-in-out infinite}
 .peeling .psst{display:none!important}
 @keyframes bob{50%{transform:translateY(-5px)}}
-@media (prefers-reduced-motion:reduce){.mq span{padding-left:12px}.mq span,.new,.why li::before,.rule,.star,.cta96,.unlocked .psst,.logo96.wob{animation:none}.thrown{transition:none}}
+@media (prefers-reduced-motion:reduce){.new,.why li::before,.rule,.star,.cta96,.unlocked .psst,.logo96.wob{animation:none}.thrown{transition:none}}
 @media (max-width:900px){
   .now{grid-template-columns:minmax(0,1fr);padding:96px 20px 30px;row-gap:18px}
   .copy{display:contents}.copy .eyebrow{order:1}.copy h1{order:2}.board{order:3;width:min(86%,340px)}.copy .ctas{order:4}.copy .lead{order:5}.tools{order:6}
@@ -177,7 +206,7 @@
   .side.l{order:3}.mid{order:2}.side.r{order:4}.w>.cta96,.w>p{order:6}.w>.foot{order:7}
   .star{display:none}
   .psst{right:96px;bottom:70px;font-size:13px}
-  .bot{bottom:110px}
+  .fbot{bottom:118px}.fbwin{bottom:118px}
 }
 </style>
 <script>document.documentElement.className+=' js oldon'</script>
@@ -215,7 +244,7 @@
 <div class="old" id="old">
   <a class="skip96" href="#main" id="skip96">Skip to the real Finesse Marketing site</a>
   <div class="w">
-    <div class="mq"><span>~~~ Welcome to Finesse Marketing!! ~~~ Toowoomba's #1 Google AdWords and Facebook Ad Specialist* ~~~ Specialist in Grok ~~~ Get found on Chat G P T!! ~~~ FREE PDF E-BOOK!! ~~~ Now with A.I. (and S.I.) ~~~ BREAKING: Local Marketer Achieves Number One On Google* ~~~ BREAKING: Still Number One* ~~~ BREAKING: Synergy Levels At Record High ~~~ This just in: Funnels ~~~ SPECIALIST WORKSHOP: MASTERS OF MARKETING for Executives, Senior Executives and Directors ~~~ Online only, via Zoom ~~~ ONLY 17 PLACES LEFT!! ~~~ Contact John NOW, this won't last!! ~~~ Starting from $2,500 (RRP $10,000) ~~~ Thank you for visiting our Web Site ~~~</span></div>
+    <div class="mq"><span>~~~ Welcome to Finesse Marketing!! ~~~ Toowoomba's #1 Google AdWords and Facebook Ad Specialist* ~~~ Specialist in GROK ~~~ Get found on Chat G P T!! ~~~ FREE PDF E-BOOK!! ~~~ Now with A.I. (and S.I.) ~~~ BREAKING: Local Marketer Achieves Number One On Google* ~~~ BREAKING: Still Number One* ~~~ BREAKING: Synergy Levels At Record High ~~~ This just in: Funnels ~~~ SPECIALIST WORKSHOP: MASTERS OF MARKETING for Executives, Senior Executives and Directors ~~~ Online only, via Zoom ~~~ ONLY 17 PLACES LEFT!! ~~~ Contact John NOW, this won't last!! ~~~ Starting from $2,500 (RRP $10,000) ~~~ Thank you for visiting our Web Site ~~~</span><button type="button" class="mqstop" aria-label="Stop the scrolling text">STOP</button></div>
     <div class="head"><button class="logo96" id="logo96" type="button" aria-label="Finesse Marketing" title="Logo (large)">
       <svg viewBox="0 0 860 150" aria-hidden="true">
         <defs>
@@ -235,7 +264,7 @@
         <text x="176" y="124" font-family="'Times New Roman',serif" font-size="22" font-style="italic" font-weight="bold" fill="#003a5a">Toowoomba's <tspan text-decoration="underline" font-weight="900">BEST</tspan> On-Line Marketing Specialist&#8482;</text>
       </svg></button></div>
     <p class="spaced" aria-hidden="true">W E L C O M E &nbsp; T O &nbsp; O U R &nbsp; W E B &nbsp; S I T E . . .</p>
-    <nav class="bar96" aria-label="Old site menu"><a href="#" title="You are already Home. Welcome Home.">Home</a><a href="#">About Us</a><a href="#">About John</a><a href="#">Services</a><a href="#">Our Team</a><a href="#">Testimonials</a><a href="#">F.A.Q.'s</a><a href="#">Blog</a><a href="#">Contact Us</a></nav>
+    <nav class="bar96" aria-label="Old site menu"><a href="#" title="You are already Home. Welcome Home.">Home</a><a href="#">About Us</a><a href="#">About John</a><a href="#">Services</a><a href="#">Our Team</a><a href="#">Testimonails</a><a href="#">F.A.Q.'s</a><a href="#">Blog</a><a href="#">Contact Us</a></nav>
     <div class="side l">
       <div class="box svc"><h3>Our Services</h3>
         <a href="#" title="Graph going up. This is the good direction."><img data-sprite="graph" alt="" width="40" height="40">Google AdWords Management</a>
@@ -245,12 +274,12 @@
         <a href="#"><img data-sprite="pen" alt="" width="40" height="40">Content Writing (Blogs, Articles &amp; Content)</a>
         <a href="#"><img data-sprite="pc" alt="" width="40" height="40">Web Site Design (Mobile Friendly!!)</a>
         <a href="#"><img data-sprite="chat" alt="" width="40" height="40">A.I. Chatbots &amp; Automation</a>
-        <a href="#"><img data-sprite="brain" alt="" width="40" height="40">Grok Specialist (self-appointed)</a>
+        <a href="#"><img data-sprite="brain" alt="" width="40" height="40">Specialist in GROK</a>
         <a href="#"><img data-sprite="bulb" alt="" width="40" height="40">Data-Driven Marketing Strategy</a>
         <a href="#"><img data-sprite="cam" alt="" width="40" height="40">Video Production</a>
       </div>
       <div class="box"><h3>Experts At Building Websites For:</h3><p style="font:13px/1.5 Arial">Tradies &#10003;<br>Coaches &#10003;<br>Consultants &#10003;<br>Influencers &#10003;<br>Large multi-million dollar organisations &#10003;<br>Everyone &#10003;<br>Medium-sized organisations &#10003;<br>Governments &#10003;<br>Big government departments &#10003;</p></div>
-      <div class="box"><h3>Text Size</h3><p style="text-align:center"><button type="button" class="b96 fs" style="font-size:12px;cursor:pointer">A</button> <button type="button" class="b96 fs" style="font-size:16px;cursor:pointer">A</button> <button type="button" class="b96 fs" style="font-size:20px;cursor:pointer">A</button><br><span style="font:11px Arial">All three make it bigger.</span></p><p style="text-align:center;margin-top:6px"><button type="button" class="b96" id="fav" style="cursor:pointer">Add to Favourites!!</button></p></div>
+      <div class="box"><h3>Text Size</h3><p style="text-align:center"><button type="button" class="b96 fs" style="font-size:12px;cursor:pointer">A</button> <button type="button" class="b96 fs" style="font-size:16px;cursor:pointer">A</button> <button type="button" class="b96 fs" style="font-size:20px;cursor:pointer">A</button><br><span style="font:11px Arial">All three make it bigger.</span></p><p style="text-align:center;margin-top:6px"><button type="button" class="b96" id="fav" style="cursor:pointer">Add to Favourites!!</button></p><p style="text-align:center;margin-top:6px"><button type="button" class="b96" id="bgBtn" style="cursor:pointer">Change Background!!</button><br><span id="bgLabel" style="font:11px Arial">Background 1 of 4</span></p></div>
       <div class="box svc"><h3>Useful Links</h3><a href="#">Google (the search engine)</a><a href="#">Google AdWords</a><a href="#">Facebook</a><a href="#">Twitter</a><a href="#">The Internet</a><a href="#">Our Web Site (this one)</a></div>
       <div class="box"><h3>Toowoomba Weather</h3><p style="text-align:center;font:bold 15px Arial"><img data-sprite="sun" alt="" width="40" height="40" style="vertical-align:middle;image-rendering:pixelated"> 23&deg;C<br><span style="font-weight:normal">Partly Marketing</span></p></div>
       <div class="box social"><h3>Connect With Us!!</h3>
@@ -263,24 +292,24 @@
     </div>
     <div class="mid">
       <div class="box welcome"><h2 title="Heading (welcome)">Welcome to the Official Web Site of Finesse Marketing!</h2>
-        <p>Finesse Marketing is Toowoomba's leading* full-service, data-driven, results-orientated, all-in-one Digital Marketing solutions provider. We specialise in <b>Google AdWords</b>, <b>Facebook Advertising</b>, <b>Instagram</b>, <b>Search Engine Optimisation (S.E.O.)</b>, <b>A.I. S.E.O.</b>, <b>Content Writing</b>, <b>Chat G P T</b>, <b>Grok</b> and the very latest in <b>Artificial Intelligence (A.I.)</b> / now <b>Super Intelligence (S.I.)</b>.<br><br>Whether you are a small business or a large multi-million dollar organisation, we can help you get found on the Internet. We pride ourselves on being the best, on having the best knowledge of things, and on being the best.<br><br>Our proven, all-in-one <b>Growth Funnel System&#8482;</b> captures your leads, nurtures your leads and converts your leads into a pipeline of results-driven Results, to get your business to <b><u>Number One on Google at all times</u></b>*. <b><u>CONTACT US TODAY TO TAKE YOUR BUSINESS TO THE NEXT LEVEL!!</u></b> And then the level after that!!<br><br>Probably the hardest-working Digital Marketing company in Toowoomba.* Please browse our Web Site and click with confidence!!</p>
+        <p>Finesse Marketing is Toowoomba's leading* full-service, data-driven, results-orientated, all-in-one Digital Marketing solutions provider. We specialise in <b>Google AdWords</b>, <b>Facebook Advertising</b>, <b>Instagram</b>, <b>Search Engine Optimisation (S.E.O.)</b>, <b>A.I. S.E.O.</b>, <b>Content Writing</b>, <b>Chat G P T</b>, <b>GROK</b> and the very latest in <b>Artificial Intelligence (A.I.)</b> / now <b>Super Intelligence (S.I.)</b>.<br><br>Whether you are a small business or a large multi-million dollar organisation, we can help you get found on the Internet. We pride ourselves on being the best, on having the best knowledge of things, and on being the best.<br><br>Our proven, all-in-one <b>Growth Funnel System&#8482;</b> captures your leads, nurtures your leads and converts your leads into a pipeline of results-driven Results, to get your business to <b><u>Number One on Google at all times</u></b>*. <b><u>CONTACT US TODAY TO TAKE YOUR BUSINESS TO THE NEXT LEVEL!!</u></b> And then the level after that!!<br><br>Probably the hardest-working Digital Marketing company in Toowoomba.* Please browse our Web Site and click with confidence!!</p>
         <p class="slogan">Marketing... the Finesse way!!!</p></div>
       <div class="box"><h3>Our Proven 3-Step Process</h3><ol class="steps"><li><b>Step 1:</b> Funnel</li><li><b>Step 2:</b> Grow Your Funnel</li><li><b>Step 3:</b> Results!!</li><li><b>Step 4:</b> Retention</li><li><b>Step 5:</b> Re-Funnel the Retention</li><li><b>Step 3b:</b> Synergy (see Step 2)</li><li><b>Step 0:</b> Awareness (do this first)</li></ol><p style="font:12px Arial;text-align:center">All steps are proven.</p></div>
       <div class="box"><h3>What's New? <span class="new">NEW!</span></h3><ul class="news">
         <li>17-11-2026: We have updated our Web Site. Can you spot the change? (It is this sentence.)</li>
-        <li>16-11-2026: John is now a <b>Grok</b> Specialist. He appointed himself.</li>
-        <li>14-11-2026: <b>S.I.</b> is now here. We will only be referring to A.I. as S.I. from here on out.</li>
+        <li>16-11-2026: John is now a <b>GROK</b> Specialist.</li>
+        <li>15-11-2026: <b>Stay tuned!!</b> Sign up to find out when Episode 1 of our new daily Podcast drops: <i>What To Look For When Buying An NFT</i>. Exploring all things NFT, every day.</li>
         <li>13-11-2026: New <b>A.I.</b> packages now available!! Ask us about A.I. today!!</li>
         <li>12-11-2026: Our Head of A.I. has been promoted to <b>Senior</b> Head of A.I. Congratulations.</li>
+        <li>11-11-2026: <b>S.I.</b> is now here. We will only be referring to A.I. as S.I. from here on out.</li>
         <li>10-11-2026: We now set up <b>Instagram</b> accounts!! Have you heard? Instagram is hot right now. Get on board now!!</li>
-        <li>06-11-2026: We are now on <b>LinkedIn</b>. Please endorse us for Synergy.</li>
-        <li>04-11-2026: Our Web Site now has a Dark Mode. It is the same as the normal mode.</li>
-        <li>01-11-2026: All our video and 3D animation now comes from only the finest production houses in the Northern Hemisphere.</li>
-        <li>28-10-2026: John has started a <b>Podcast</b>. Episode 1 coming soon.</li>
-        <li>20-10-2026: We have moved to a bigger Desk.</li>
-        <li>05-09-2026: Our Google+ page has reached 1 follower.</li>
-        <li>21-08-2026: We tried a new font. We have gone back to the old font.</li>
-        <li>08-08-2026: The "What's New?" box is new. Welcome to the "What's New?" box.</li></ul></div>
+        <li>08-11-2026: We are now seeking shout-outs on <b>LinkedIn</b>!! Please tag us in a post about Synergy.</li>
+        <li>07-11-2026: We now offer <b>Professional Graphic Design</b> services!! Custom images from only $30 an image. Get a custom image for your loved one this Christmas. Orders open now!!</li>
+        <li>06-11-2026: John has upgraded to a paid <b>Chat G P T</b> plan.</li>
+        <li>05-11-2026: We now use 14 different A.I. tools to write a single sentence. This was one of them.</li>
+        <li>03-11-2026: Our A.I. Agent now has its own A.I. Agent. They are both very busy.</li>
+        <li>02-11-2026: We now use an A.I. note-taker in every meeting. Last Tuesday it was the only one who turned up.</li>
+        <li>01-11-2026: All our video and 3D animation now comes from only the finest production houses in the Northern Hemisphere.</li></ul></div>
       <div class="rule"></div>
       <div class="box"><h3>Why Choose Finesse Marketing?</h3><ul class="why">
         <li>We are passionate about your business</li>
@@ -301,16 +330,15 @@
         <p class="sec">BASE STATS</p>
         <ul class="base"><li>Strength<i class="over"></i>102</li><li>Synergy<i></i>100</li><li>Humility<i></i>100</li><li>A.I./S.I.<i></i>100</li><li>Hustle<i></i>100</li><li>Charisma<i></i>100</li><li>Vision<i></i>100</li></ul>
         <p class="sec">SUB-STATS</p>
-        <ul class="sub"><li>Google AdWords<i></i>100</li><li>S.E.O.<i></i>100</li><li>Graphic Design<i></i>100</li><li>Web Design<i></i>100</li><li>Video Design<i></i>100</li><li>Business Design<i></i>100</li><li>Business Advice<i></i>100</li><li>Business Coaching<i></i>100</li><li>Life Coaching<i></i>100</li><li>Mindset Coaching<i></i>100</li><li>Copywriting<i></i>100</li><li>Content Writing<i></i>100</li><li>Funnels<i></i>100</li><li>Thought Leadership<i></i>100</li><li>Personal Branding<i></i>100</li><li>Networking<i></i>100</li><li>Crypto<i></i>100</li><li>Manifesting<i></i>100</li><li>Grok<i></i>100</li><li>Chat G.P.T.<i></i>100</li></ul>
-        </div></div><p class="tip"><b>TIP:</b> Did you know? John Hewitt is the Founder and Owner of Finesse Marketing!!</p></div>
+        <ul class="sub"><li>Google AdWords<i></i>100</li><li>S.E.O.<i></i>100</li><li>Graphic Design<i></i>100</li><li>Web Design<i></i>100</li><li>Video Design<i></i>100</li><li>Business Design<i></i>100</li><li>Business Advice<i></i>100</li><li>Business Coaching<i></i>100</li><li>Life Coaching<i></i>100</li><li>Mindset Coaching<i></i>100</li><li>Copywriting<i></i>100</li><li>Content Writing<i></i>100</li><li>Funnels<i></i>100</li><li>Thought Leadership<i></i>100</li><li>Personal Branding<i></i>100</li><li>Networking<i></i>100</li><li>Crypto<i></i>100</li><li>Manifesting<i></i>100</li><li>GROK<i></i>100</li><li>Chat G.P.T.<i></i>100</li></ul>
+        </div></div><p class="tip">&#128073; <b>TIP:</b> Did you know? John Hewitt is the Founder and Owner of Finnese Marketing!!</p></div>
       <div class="box testi"><h3>Testimonials</h3>
         <p>&#8220;Very professional. He wore a collared shirt.&#8221;<br><b>~ Westbrook Thursday Night Trivia Team (Quiz Khalifa)</b></p>
-        
         <p>&#8220;We asked for a logo, a website and a marketing strategy. We received a Funnel. We are still not sure what it does, but it is ours.&#8221;<br><b>~ Rangeville Ladies Croquet Auxiliary</b></p>
-        <p>&#8220;He explained Google AdWords to us for two hours. We still do not know what it is, but apparently we are Number One.*&#8221;<br><b>~ Toowoomba Grill Masters Guild (Saturday Tongs Division)</b></p>
-        <p>&#8220;John said the word &#8216;synergy&#8217; at our AGM and three people joined on the spot. One of them was John.&#8221;<br><b>~ Treasurer, Toowoomba Lost Socks Society</b></p>
-        <p>&#8220;Five stars. Would have given six but the form would not let us.&#8221;<br><b>~ Mount Mollymook Men's Choir (Baritone Section)</b></p></div>
-      <div class="box"><h3>Our Values</h3><p class="mission" style="font-style:normal;font-weight:bold">Integrity. Excellence. Integrity (it is that important). Synergy. Values.<br><span style="font-weight:normal;font-size:14px">We value our Values.</span></p></div>
+        <p>&#8220;He explained Google AdWords to us for two hours. We still do not know what it is, but apparently we are Number One at certain times on certain devices.&#8221;<br><b>~ Toowoomba Grill Masters Guild (Saturday Tongs Division)</b></p>
+        <p>&#8220;He said we would be Number One on Google. We searched our own name and there we were.&#8221;<br><b>~ Mount Mollymook Pony Club</b></p>
+        <p>&#8220;Our raffle has never been more data-driven.&#8221;<br><b>~ Mount Mollymook Bowls &amp; Raffle Club</b></p></div>
+      <div class="box"><h3>Our Values</h3><p class="mission" style="font-style:normal;font-weight:bold">Integrity. Excellence. Integrity (it is that important). Synergy. Values.<br><span style="font-weight:normal;font-size:14px">We value our Values. It's as simple as that.<br>I'm done explaining myself.</span></p></div>
       <div class="box rant"><h3>A Message From John: Why We Will NEVER Use A.I. Slop</h3>
         <p class="gpt">Certainly! Here is a heartfelt, authentic rant about A.I. slop for your business website:</p>
         <p><b>Why I Refuse to Use A.I. Slop &#8212; And Why You Should Too</b></p>
@@ -321,18 +349,17 @@
         <p>At Finesse Marketing, we don't just write content &#8212; we craft experiences. Let's delve into what truly matters: <i>you</i>.</p>
         <p>In conclusion, while A.I. may have its place, the future of marketing is &#8212; and always will be &#8212; human. &#10024;</p>
         <p class="gpt">Would you like me to make it more personal, or add a call to action at the end?</p></div>
-      <div class="box mission"><h3 style="font-style:normal">Our Mission</h3>To be the best marketing company we can be, for the business of promoting other businesses through advertising and online marketing, including S.E.O., in Toowoomba.</div>
+      <div class="box mission"><h3 style="font-style:normal">Our Mission</h3>To be the best marketing company we can be, for the business of promoting other businesses through advertising and online marketing, including S.E.O., in Toowoomba, and also Australia.</div>
       <div class="box faq"><h3>F.A.Q.'s</h3>
         <p><b>Q: What is Google AdWords?</b><br>A: It is Google's term for its paid ads system, where you bid on keywords and you come up first on Google. Sometimes now you can use images and video too. And now also A.I. I am skilled at all of these, by the way.</p>
         <p><b>Q: What is the difference between Google AdWords and Google Ads?</b><br>A: There is absolutely no difference. We specialise in both anyway, so it would not matter if there was.</p>
         <p><b>Q: What does S.I. stand for?</b><br>A: Super Intelligence is the true name given to A.I. It is also more powerful than A.I. I am also a specialist at it.</p>
         <p><b>Q: Can you get me to Number One on Google?</b><br>A: Yes.</p>
         <p><b>Q: How much does it cost?</b><br>A: It depends. <b>Q: On what?</b> A: On how much money you can afford that month.</p>
-        <p><b>Q: Do you guarantee results?</b><br>A: We guarantee there will be results.</p>
-        <p><b>Q: Can I speak to your manager?</b><br>A: Speaking.</p>
+        <p><b>Q: Can you guarantee results?</b><br>A: I guarantee that there will be results, and I will send you a report at the end of the month and provide a free Strategy Consult Session.</p>
         <p><b>Q: Do you use A.I. to write your content?</b><br>A: Absolutely not. Please see our heartfelt rant above.</p>
         <p><b>Q: Are you a real agency?</b><br>A: Yes. We have a Logo, and we are registered with an A.B.N., so you know we are the real deal. We also have a Business Name.</p>
-        <p><b>Q: What are your business hours?</b><br>A: 24/7, 365 days a year. Open Christmas Day.</p>
+        <p><b>Q: What are your business hours?</b><br>A: 24/7, 365 days a year. Open Xmas Day. Send our team a message, we are waiting for you. <a href="#">Click to message.</a></p>
         <p><b>Q: Is my data safe?</b><br>A: Your data is data-driven.</p></div>
       <div class="box ctr">You are visitor number <span class="led" id="led"></span> since November 1998</div>
       <div class="rule"></div>
@@ -346,15 +373,18 @@
           <p><b>Gary:</b> first!!!!</p>
           <p><b>Darren (Highfields):</b> is this the bowls club</p>
           <p><b>H0T_S1NGLES_N3AR_U:</b> Lonely? Hot singles in Toowoomba want to discuss your S.E.O. tonight!!! [link removed by Webmaster]</p>
-          <p><b>Anonymous:</b> John you absolute ****ing ****. My ads are still not Number One at all times. (edited by Moderator)</p>
-          <p><b>Shazza_74:</b> Looking for Sharon from netball. Sharon if you see this, I have your esky.</p>
+          <p><b>Anonymous:</b> John you absolute ****ing ****. (edited by Moderator)</p>
+          <p><b>SEO_PACKAGES_CHEAP:</b> Get 10,000 backlinks TODAY!! Rank #1 on Google in 24 hours guaranteed!! [link removed by Webmaster]</p>
           <p><b>Crystal_XXX:</b> [This entry has been removed for violating our Guestbook Policy]</p>
           <p><b>Nev (Oakey):</b> Printed this page out. Used a lot of ink. ****ing waste of ink to be honest.</p>
+          <p><b>Brad (Darling Heights):</b> does the Growth Accelerator Pro Max come with the S.I. or is that extra</p>
           <p><b>Deb:</b> hi Gary</p>
           <p><b>Gary:</b> hi Deb</p>
           <p><b>Gary:</b> Deb why are you on here</p>
-          <p><b>xX_Jayden_Xx:</b> my nan made me sign this</p>
-          <p><b>Jayden's Nan:</b> I did not</p>
+          <p><b>xX_Kayden_Xx:</b> 6 7</p>
+          <p><b>xX_Kayden_Xx:</b> 6 7</p>
+          <p><b>xX_Kayden_Xx:</b> 6 7</p>
+          <p><b>AI_Agency_Pro_Max:</b> Great post!! We offer A.I. S.E.O. packages from $9.99. Message us!!</p>
           <p><b>Big_Rod_69:</b> nice. [rest of entry removed by Webmaster]</p>
           <p><b>Former Client:</b> He said "data-driven" 47 times in one meeting. I counted. Still drove no ****ing data.</p>
           <p><b>Anonymous:</b> is this site a joke</p>
@@ -365,7 +395,7 @@
       <div class="box ebook"><h3>FREE PDF E-BOOK!!</h3>
         <div class="cover" aria-hidden="true"><span>7 SECRETS</span><small>Google Doesn't Want You To Know</small><em>by John Hewitt</em></div>
         <p>Download our <b>FREE</b> PDF E-Book, <i>7 Secrets Google Doesn't Want You To Know</i>, by John Hewitt.</p>
-        <form id="eb" autocomplete="off"><label for="ebe" style="font:bold 13px Arial">Your E-mail:</label><input id="ebe" type="email" style="width:100%;min-height:28px;border:2px inset #888"><button type="submit" class="b96" style="margin-top:6px;cursor:pointer">Download Now!!</button></form>
+        <form id="eb" autocomplete="off" novalidate><label for="ebe" style="font:bold 13px Arial">Your E-mail:</label><input id="ebe" type="email" style="width:100%;min-height:28px;border:2px inset #888"><button type="submit" class="b96" style="margin-top:6px;cursor:pointer">Download Now!!</button></form>
         <p id="ebs" style="font:bold 13px Arial;color:#006000" aria-live="polite"></p></div>
       <div class="box si"><h3>Ask Our S.I.!!</h3><form id="si" autocomplete="off"><label for="siq" style="font:bold 13px Arial">Ask anything:</label><input id="siq" style="width:100%;min-height:28px;border:2px inset #888"><button type="submit" class="b96" style="margin-top:6px;cursor:pointer">Ask</button></form><p id="sia" style="font:bold 14px 'Comic Sans MS','Comic Sans',cursive;margin-top:6px" aria-live="polite"></p></div>
       <div class="box pk"><h3>Everything Is A Package!!</h3>
@@ -385,8 +415,14 @@
     <p class="kw" id="kw">Google AdWords Toowoomba, Google's AdWords Toowoomba City, Facebook Ads East Toowoomba, Twitter Marketing South Toowoomba, A.I. SEO North Toowoomba, Google AdWords Middle Ridge, Web Site Design Rangeville, On-Line Marketing Newtown, Number One on Google Kearneys Spring, Instagram Specialist Harristown, S.I. Marketing Wilsonton, A.I. Glenvale, Facebook Darling Heights, Google Drayton, Data-Driven Centenary Heights, AdWords Mount Lofty, SEO Harlaxton, Marketing Rockville, Web Site Cranley, Google's AdWords Highfields, AdWords Cabarlah, Marketing Westbrook, SEO Wyreema, Facebook Ads Cambooya, Google Kingsthorpe, A.I. Gowrie Junction, Twitter Meringandan, On-Line Oakey, Number One on Google Pittsworth, AdWords Crows Nest, S.I. Goombungee, Marketing Clifton, SEO Millmerran, Google AdWords Dalby, Web Site Warwick, Facebook Allora, Funnels Prince Henry Heights, Growth Funnel Mount Kynoch, Pipeline Redwood, Marketing Darling Downs, Best Marketing Darling Downs, Cheap Marketing Darling Downs, Marketing Near Me, Marketing Near You, Toowomba Marketing, Toowoombah AdWords, Twoomba SEO, Towoomba Google, Toowoomba Toowoomba Toowoomba, marketing marketing, google</p>
     <p class="foot" id="foot"><a href="#">Home</a> | <a href="#">Services</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms &amp; Conditions</a> | <a href="#">Site Map</a> | <a href="#">Contact the Webmaster</a><br>Copyright &copy; 2026 J-Money Productions&#8482;. All Rights Reserved. Last updated: 17-11-2026.<br>Now accepting payment in Cryptocurrency. Stay tuned for the J$MONEY crypto coin!! Sign up to our mailing list to learn about your stock options and get first dibs on this amazing new opportunity.<br>This Web Site is best viewed at 1920 x 1080 on a desktop computer with your eyes.<br><span class="fine">*Not a guarantee. Results not typical. Rankings may vary. Number One not available at all times. **Our Number One priority may vary.</span><br><span class="fine" style="font-size:9px">*Unconfirmed.</span></p>
   </div>
-  <div class="cookie" id="cookie">This Web Site uses cookies (and Tim Tams) to improve your experience. <button type="button">I Accept</button><button type="button">I Also Accept</button></div>
-  <button class="bot" id="bot" type="button">Chat with our A.I. Assistant!!</button>
+  <div class="fbot" id="fbot"><button type="button" class="fblaunch" id="fbLaunch" aria-label="Open chat with Finesse Bot"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><radialGradient id="mb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#9fd8ff"/><stop offset=".55" stop-color="#2f8cff"/><stop offset="1" stop-color="#1046b8"/></radialGradient></defs><line x1="32" y1="10" x2="32" y2="2" stroke="#1046b8" stroke-width="3"/><circle cx="32" cy="3" r="3.5" fill="#ffd200"/><circle cx="32" cy="35" r="25" fill="url(#mb)" stroke="#0a2f7a" stroke-width="2"/><ellipse cx="32" cy="36" rx="18" ry="15" fill="#fff"/><circle cx="24" cy="32" r="5.5" fill="#000"/><circle cx="25.5" cy="30.5" r="1.8" fill="#fff"/><circle cx="41" cy="34" r="3" fill="#000"/><circle cx="41.8" cy="33.2" r="1" fill="#fff"/><path d="M21 41 Q32 52 44 40" fill="#c0102a" stroke="#000" stroke-width="1.5"/><path d="M24 42.5 h18" stroke="#fff" stroke-width="2.4"/><path d="M8 33 a24 24 0 0 1 48 0" fill="none" stroke="#333" stroke-width="3"/><rect x="4" y="30" width="7" height="11" rx="3" fill="#333"/><rect x="53" y="30" width="7" height="11" rx="3" fill="#333"/><path d="M11 40 q2 10 12 11" fill="none" stroke="#333" stroke-width="2"/><circle cx="23" cy="51" r="2" fill="#333"/><path d="M52 12 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5z" fill="#ffd200"/></svg><span class="fbbadge">1</span></button><p class="fbhi" id="fbHi">Hi!! I am Finesse Bot. Need help?? &#128075;</p></div>
+  <div class="fbwin" id="fbWin" role="dialog" aria-label="Finesse Bot chat" hidden>
+    <div class="fbhead"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><radialGradient id="mb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#9fd8ff"/><stop offset=".55" stop-color="#2f8cff"/><stop offset="1" stop-color="#1046b8"/></radialGradient></defs><line x1="32" y1="10" x2="32" y2="2" stroke="#1046b8" stroke-width="3"/><circle cx="32" cy="3" r="3.5" fill="#ffd200"/><circle cx="32" cy="35" r="25" fill="url(#mb)" stroke="#0a2f7a" stroke-width="2"/><ellipse cx="32" cy="36" rx="18" ry="15" fill="#fff"/><circle cx="24" cy="32" r="5.5" fill="#000"/><circle cx="25.5" cy="30.5" r="1.8" fill="#fff"/><circle cx="41" cy="34" r="3" fill="#000"/><circle cx="41.8" cy="33.2" r="1" fill="#fff"/><path d="M21 41 Q32 52 44 40" fill="#c0102a" stroke="#000" stroke-width="1.5"/><path d="M24 42.5 h18" stroke="#fff" stroke-width="2.4"/><path d="M8 33 a24 24 0 0 1 48 0" fill="none" stroke="#333" stroke-width="3"/><rect x="4" y="30" width="7" height="11" rx="3" fill="#333"/><rect x="53" y="30" width="7" height="11" rx="3" fill="#333"/><path d="M11 40 q2 10 12 11" fill="none" stroke="#333" stroke-width="2"/><circle cx="23" cy="51" r="2" fill="#333"/><path d="M52 12 l1.5 4 4 1.5 -4 1.5 -1.5 4 -1.5 -4 -4 -1.5 4 -1.5z" fill="#ffd200"/></svg><div><b>Finesse Bot</b> <span class="ai">A.I.</span><br><small><i class="dot"></i> Online (mostly)</small></div><button type="button" class="fbx" id="fbClose" aria-label="Close chat">x</button></div>
+    <div class="fbmsgs" id="fbMsgs" aria-live="polite"></div>
+    <form class="fbin" id="fbForm" autocomplete="off"><input id="fbText" aria-label="Type a message" placeholder="Type your message..."><button type="submit">Send</button></form>
+    <p class="fbfoot">Powered by S.I. &#183; Responses may vary</p>
+  </div>
+  <div class="cookie" id="cookie">This Web Site uses cookies to improve your experience. <button type="button">I Accept</button><button type="button">Please Take My Data</button></div>
 </div>
 <div class="pop" id="popPrize" role="dialog" aria-modal="false" aria-labelledby="pp1" hidden>
   <div class="tb"><span id="pp1">Message from webpage</span><i aria-hidden="true">x</i></div>
@@ -401,11 +437,11 @@
 <div class="pop" id="popBottom" role="dialog" aria-modal="false" aria-labelledby="pp2" hidden>
   <div class="tb"><span id="pp2">Message from webpage</span><i aria-hidden="true">x</i></div>
   <div class="bd"><span class="ic" aria-hidden="true">?</span><p>You have reached the bottom of our Web Site.<br><br>Would you like to see the <b>real</b> Finesse Marketing?</p></div>
-  <div class="bt"><button type="button" data-a="yes">Yes</button><button type="button" data-a="no">No thanks</button></div>
+  <div class="bt"><button type="button" data-a="yes">Yes</button><button type="button" data-a="toobad">No thanks</button></div>
 </div>
 <canvas id="flap" aria-hidden="true"></canvas>
 <button class="ear" id="ear" type="button" aria-label="Peel back the old site to see the real one"></button>
-<p class="psst" aria-hidden="true">Psst... grab the corner ;-)</p>
+<p class="psst" aria-hidden="true">Down here <span style="font-size:22px;vertical-align:-3px">&#8600;</span></p>
 <div class="mock-tag">Mock-up, sample words</div>
 
 <script>
@@ -427,15 +463,28 @@
     sun:['.....y......','..y..y..y...','...yyyyy....','..yyyyyyy...','yyyyyoyyyyy.','..yyyyyyy...','...yyyyy....','..y..y..y...','.....y......','............','............','............'],
     chat:['............','.bbbbbbbbbb.','bwwwwwwwwwwb','bwwwwwwwwwwb','bwkwwkwwkwwb','bwwwwwwwwwwb','bwwwwwwwwwwb','.bbbwbbbbbb.','...bwb......','...bb.......','............','............'],
     brain:['............','...pp.pp....','..pppppppp..','.pppwpppppp.','.ppppppwppp.','.pwpppppppp.','.ppppppppppp','..pppwppppp.','...pppppp...','.....pp.....','.....pp.....','............'],
-    knight:['..........oo.....','.........ooo.....','........oo.......','.......kkkkkk....','......kgwggggk...','......kggggggk...','......kyyyyyyk...','......kssssssk...','......kskssksk...','......kssssssk...','......khsrrshk...','.......khhhhk....','..kkk..kkkkk...c.','.kwoowkgwgggk..c.','.kowwokgggggggkc.','.kowowkggyggggkc.','.kowwokgggggggkyy','.kwoowkgggggggk.y','..kkk.kyyyyyyyk..','......kdddkdddk..','......kgggkgggk..','......kgggkgggk..','......knnnknnnk..','.....knnnk.knnnk.'],
+    knight:['..........oo.....','.........ooo.....','........oo.......','.......kkkkkk....','......kgwggggk...','......kggggggk...','......kyyyyyyk...','.....hhsssssshh..','.....hhskssskhh..','.....hhsssssshh..','.....hhssrrsshh..','......hksssskh...','..kkk.hkkkkkh..c.','.kwoowkgwgggk..c.','.kowwokgggggggkc.','.kowowkggyggggkc.','.kowwokgggggggkyy','.kwoowkgggggggk.y','..kkk.kyyyyyyyk..','......kdddkdddk..','......kgggkgggk..','......kgggkgggk..','......knnnknnnk..','.....knnnk.knnnk.'],
     john:['....hhhhhh....','...hhhhhhhh...','...hssssssh...','...ssssssss...','...sksssskss..','...ssssssss...','....ssrrss....','.....ssss.....','...dddssddd...','..dddddddddd..','.dddddwwdddddd','.ddddddwddddd.','.dddddddddddd.','.dddddddddddd.','.dddddddddddd.','.dddddddddddd.']
   };
   function sprite(name){const m=SPR[name],h=m.length,w=m[0].length,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');
     for(let y=0;y<h;y++)for(let x=0;x<w;x++){const ch=m[y][x]||'.';if(ch!=='.'){g.fillStyle=PAL[ch];g.fillRect(x,y,1,1)}}return c.toDataURL()}
   document.querySelectorAll('img[data-sprite]').forEach(i=>i.src=sprite(i.dataset.sprite));
-  (()=>{const c=document.createElement('canvas');c.width=64;c.height=48;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,0,48);gr.addColorStop(0,'#4aa3e8');gr.addColorStop(1,'#a9dcff');g.fillStyle=gr;g.fillRect(0,0,64,48);
-    g.fillStyle='rgba(255,255,255,.95)';[[14,14,9],[22,11,8],[30,15,8],[46,32,7],[53,29,6],[40,34,6],[8,38,4]].forEach(([x,y,r])=>{g.beginPath();g.arc(x,y,r,0,7);g.fill()});
-    old.style.backgroundImage=`url(${c.toDataURL()})`})();
+  /* ---------- tiled backgrounds, all drawn here: 1 clouds, 2 pixel cat, 3 pixel logo, 4 flames ---------- */
+  const BG=[];
+  BG.push(()=>{const c=document.createElement('canvas');c.width=80;c.height=64;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,0,64);gr.addColorStop(0,'#3d8fe0');gr.addColorStop(1,'#a9dcff');g.fillStyle=gr;g.fillRect(0,0,80,64);
+    g.fillStyle='rgba(255,255,255,.95)';[[14,14,9],[22,11,8],[30,15,8],[56,44,7],[63,41,6],[50,46,6],[8,52,4]].forEach(([x,y,r])=>{g.beginPath();g.arc(x,y,r,0,7);g.fill()});
+    const eye=(x,y)=>{[[6,'#ff7a00'],[4.5,'#fff'],[3,'#ff7a00'],[1.5,'#fff']].forEach(([r,col])=>{g.fillStyle=col;g.beginPath();g.arc(x,y,r,0,7);g.fill()})};eye(66,12);eye(30,48);
+    g.fillStyle='#fff36b';[[46,22],[12,32],[72,58]].forEach(([x,y])=>{g.fillRect(x-1,y-3,2,6);g.fillRect(x-3,y-1,6,2)});return [c.toDataURL(),'160px 128px']});
+  BG.push(()=>{const c=document.createElement('canvas');c.width=32;c.height=32;const g=c.getContext('2d');g.fillStyle='#ff9ad5';g.fillRect(0,0,32,32);g.fillStyle='#9fe8ff';g.fillRect(0,0,16,16);g.fillRect(16,16,16,16);
+    const cat=['.k........k.','kok......kok','kook....kook','koookkkkoook','kooooooooook','kowkoooowkok','kooooooooook','kooookkooook','kooopkkpoook','.kooooooook.','..kkkkkkkk..'];const P={k:'#000',o:'#ff8a1f',w:'#fff',p:'#ff4fa0'};
+    cat.forEach((r,y)=>[...r].forEach((ch,x)=>{if(ch!=='.'){g.fillStyle=P[ch];g.fillRect(x+2,y+3,1,1)}}));cat.forEach((r,y)=>[...r].forEach((ch,x)=>{if(ch!=='.'){g.fillStyle=P[ch];g.fillRect(x+18,y+19,1,1)}}));return [c.toDataURL(),'128px 128px']});
+  BG.push(()=>{const c=document.createElement('canvas');c.width=40;c.height=40;const g=c.getContext('2d');g.fillStyle='#000058';g.fillRect(0,0,40,40);g.fillStyle='#fff';[[3,4],[33,9],[25,34],[9,30]].forEach(([x,y])=>g.fillRect(x,y,1,1));
+    [[11,'#fff'],[8,'#000058'],[6,'#fff'],[3,'#000058']].forEach(([r,col])=>{g.fillStyle=col;g.beginPath();g.arc(22,22,r,0,7);g.fill()});
+    g.strokeStyle='#ff7a00';g.lineWidth=2;g.beginPath();g.moveTo(7,13);g.lineTo(21,21);g.stroke();g.fillStyle='#ff7a00';g.fillRect(5,10,4,4);return [c.toDataURL(),'120px 120px']});
+  BG.push(()=>{const c=document.createElement('canvas');c.width=24;c.height=32;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,0,32);gr.addColorStop(0,'#200000');gr.addColorStop(.45,'#a00000');gr.addColorStop(.75,'#ff6a00');gr.addColorStop(1,'#ffe066');g.fillStyle=gr;g.fillRect(0,0,24,32);
+    g.fillStyle='#200000';[[0,0,6,14],[8,0,5,9],[15,0,6,16],[21,0,3,11]].forEach(([x,y,w,h])=>{g.beginPath();g.moveTo(x,y);g.lineTo(x+w,y);g.lineTo(x+w/2,y+h);g.fill()});return [c.toDataURL(),'72px 96px']});
+  let bgN=0;const setBg=n=>{bgN=n%BG.length;const [u,sz]=BG[bgN]();old.style.backgroundImage=`url(${u})`;old.style.backgroundSize=sz;const l=document.getElementById('bgLabel');if(l)l.textContent=`Background ${bgN+1} of ${BG.length}`};
+  setBg(0);
   /* ---------- counter: thousands, not millions ---------- */
   const led=document.getElementById('led');const visitor=3814+Math.floor(Math.random()*3);
   led.innerHTML=String(visitor).padStart(7,'0').split('').map(c=>'<i>'+c+'</i>').join('');
@@ -449,11 +498,30 @@
   document.getElementById('gb').addEventListener('submit',e=>{e.preventDefault();const s=document.getElementById('gbsent');s.hidden=false;s.textContent='Thank you for signing our guestbook!! (Demo: nothing was sent. On the live site this goes straight to John.)'});
   /* ---------- cookie bar and the A.I. assistant ---------- */
   document.querySelectorAll('#cookie button').forEach(b=>b.addEventListener('click',()=>document.getElementById('cookie').classList.add('hide')));
-  const bot=document.getElementById('bot');let botN=0;const BOT=['Hi!! I am Finesse Bot. I am currently at lunch.','I am back from lunch. How may I help you help me help you?','Great question!! I have forwarded it to myself.','Did you mean: Google AdWords?','I am powered by A.I. and a small amount of S.I. Please be patient.','Fun fact: I am a robot. Fun fact: that was the fun fact.','You are number 1 in the queue. There are 0 operators. Your wait time is: yes.','I am going back to lunch now. Thank you for chatting with Finesse Bot. Please rate this lunch.'];
-  bot.addEventListener('click',()=>{let r=bot.nextElementSibling;if(!r||!r.classList.contains('reply')){r=document.createElement('p');r.className='reply';r.setAttribute('role','status');bot.after(r)}r.textContent=BOT[botN++%BOT.length]});
+  /* ---------- ticker stop button ---------- */
+  const mqb=old.querySelector('.mqstop');mqb.addEventListener('click',()=>{const m=old.querySelector('.mq'),on=m.classList.toggle('paused');mqb.textContent=on?'PLAY':'STOP';mqb.setAttribute('aria-label',on?'Play the scrolling text':'Stop the scrolling text')});
+  document.getElementById('bgBtn').addEventListener('click',()=>setBg(bgN+1));
+  /* ---------- Finesse Bot: a broken chatbot ---------- */
+  (()=>{const L=document.getElementById('fbLaunch'),W=document.getElementById('fbWin'),M=document.getElementById('fbMsgs'),F=document.getElementById('fbForm'),T=document.getElementById('fbText'),HI=document.getElementById('fbHi');
+    const say=(t,c)=>{const p=document.createElement('p');p.className=c;p.textContent=t;M.appendChild(p);M.scrollTop=M.scrollHeight;return p};
+    const wait=ms=>new Promise(r=>setTimeout(r,reduce?Math.min(ms,300):ms));
+    const R=["Great question!! I have forwarded it to myself.","Did you mean: Google AdWords?","As an A.I. language model, I cannot do marketing. But Finesse Marketing can!!","Sorry, I am currently at lunch.","[object Object]","undefined","Here is a picture of a funnel: [image failed to load]","Please hold. You are caller number 3,815.","I am powered by S.I. (Super Intelligence). Please type more slowly.","Error 418: I am a teapot.","Have you considered our Enterprise Synergy Suite (TM)?","Thank you for chatting with Finesse Bot. Please rate this lunch: 1 out of 5 stars."];
+    let n=0,busy=false,opened=false;
+    async function bot(){busy=true;const t=say('Finesse Bot is typing...','b typing');await wait(1400+Math.random()*2600);t.remove();
+      const roll=Math.random();
+      if(roll<.12){say('Finesse Bot has left the chat.','sys');await wait(1200);say('Finesse Bot has joined the chat.','sys');busy=false;return}
+      const r=R[n++%R.length];
+      if(roll<.25){W.classList.remove('glitch');void W.offsetWidth;W.classList.add('glitch');for(let k=0;k<3;k++){say(r,'b');await wait(250)}}else say(r,'b');
+      busy=false}
+    async function open(){W.hidden=false;HI.hidden=true;L.querySelector('.fbbadge').hidden=true;if(!opened){opened=true;say('Finesse Bot is typing...','b typing');await wait(1500);M.lastChild.remove();say('Hi!! I am Finesse Bot. How may I help you help me help you?','b')}T.focus({preventScroll:true})}
+    L.addEventListener('click',open);document.getElementById('fbClose').addEventListener('click',()=>{W.hidden=true});
+    F.addEventListener('submit',e=>{e.preventDefault();const v=T.value.trim();if(!v||busy)return;say(v,'u');T.value='';
+      if(Math.random()<.2){busy=true;wait(1600).then(()=>{say('You said: "'+[...v].reverse().join('')+'". Is that correct?','b');busy=false});return}bot()});
+    HI.hidden=true;setTimeout(()=>{if(!opened)HI.hidden=false},6000);
+  })();
   /* ---------- small gags ---------- */
-  document.getElementById('eb').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ebs').textContent='Thank you!! Your E-Book is on its way.* (*It is not. Demo only, nothing was sent.)'});
-  document.getElementById('si').addEventListener('submit',e=>{e.preventDefault();const a=document.getElementById('sia');a.textContent='Thinking...';setTimeout(()=>a.textContent='Google AdWords.',reduce?400:2600)});
+  document.getElementById('eb').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('ebe').value.trim(),o=document.getElementById('ebs');if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)){o.style.color='#c00000';o.textContent='Please enter your E-mail address.';return}o.style.color='#006000';o.textContent='Thank you!! Your E-Book is on its way. Please check your Junk Mail or Spam folder. It is guaranteed to be in there within the next 3 working weeks.'});
+  document.getElementById('si').addEventListener('submit',e=>{e.preventDefault();const a=document.getElementById('sia');a.textContent='Thinking...';setTimeout(()=>{a.innerHTML='It sounds like you need our <b>Premium Consult Package</b>. <a href="#" class="jump">Click here to request a quote today.</a>';a.querySelector('.jump').addEventListener('click',ev=>{ev.preventDefault();jumpTo()})},reduce?400:2600)});
   let fz=1;document.querySelectorAll('.fs').forEach(b=>b.addEventListener('click',()=>{fz=Math.min(1.5,fz+.08);old.querySelector('.w').style.zoom=fz}));
   document.getElementById('fav').addEventListener('click',()=>{const f=document.getElementById('popFav');f.hidden=false;f.querySelector('button').focus({preventScroll:true})});
   const q=document.getElementById('quote');let dodge=0;
@@ -503,7 +571,10 @@
   // 2. pop-ups: a prize after a while on the page, and a question when someone reaches the bottom and waits
   const popPrize=document.getElementById('popPrize'),popBottom=document.getElementById('popBottom');let shown={prize:false,bottom:false},bottomT=0;
   function pop(el,key){if(state!=='flat'||shown[key]||!document.querySelectorAll('.pop:not([hidden])').length===false)return;shown[key]=true;el.hidden=false;el.querySelector('button').focus({preventScroll:true})}
-  [popPrize,popBottom,document.getElementById('popFav')].forEach(el=>el.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{el.hidden=true;if(b.dataset.a==='yes')unlock()})));
+  [popPrize,popBottom,document.getElementById('popFav')].forEach(el=>el.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.a==='toobad'){const bd=el.querySelector('.bd p'),bt=el.querySelector('.bt');bt.style.display='none';let n=3;bd.innerHTML='<b>Too bad.</b> You are seeing it anyway.<br><br>Peeling in <b class="cd">3</b>...';
+      const iv=setInterval(()=>{n--;if(n>0){bd.querySelector('.cd').textContent=n;return}clearInterval(iv);el.hidden=true;unlock();setTimeout(()=>peelAll(1400),reduce?0:700)},1000);return}
+    el.hidden=true;if(b.dataset.a==='yes')unlock()})));
   setTimeout(()=>pop(popPrize,'prize'),22000);
   new IntersectionObserver(es=>{if(es[0].isIntersecting){bottomT=setTimeout(()=>pop(popBottom,'bottom'),3000)}else clearTimeout(bottomT)},{root:old,threshold:.6}).observe(document.getElementById('foot'));
   // 3. keyboard and screen readers: the hidden skip link goes straight through
