@@ -234,7 +234,7 @@
 <main id="main">
 <section class="now" id="now">
   <div class="copy">
-    <p class="eyebrow">Senior marketing · Toowoomba</p>
+    <p class="eyebrow">Marketing, websites and AI · Toowoomba</p>
     <h1>The tools keep changing. <em>The judgement doesn't.</em></h1>
     <p class="lead">I'm John Hewitt. I put the technology of the day to work on your marketing: strategy, paid ads, websites and now AI automation, for established businesses that want it done properly.</p>
     <div class="ctas"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
@@ -363,7 +363,7 @@
       <div class="box testi"><h3>Testimonials</h3>
         <p>&#8220;He said we would be Number One on Google. We searched our own name and there we were.&#8221;<br><b>~ Lower Range Pony &amp; Hobby Horse Club</b></p>
         <p>&#8220;Our raffle has never been more data-driven.&#8221;<br><b>~ East Side Bowls &amp; Raffle Club</b></p>
-        <p>&#8220;We asked for a logo, a website and a marketing strategy. We received a Funnel. We are still not sure what it does, but it is ours for just $140 a month.&#8221;<br><b>~ Rangeville Ladies Croquet Auxiliary</b></p>
+        <p>&#8220;We asked for a logo, a website and a marketing strategy. We received a &#8220;Funnel&#8221;. We are still not sure what it does, but it is ours for just $140 a month.&#8221;<br><b>~ Rangeville Ladies Croquet Auxiliary</b></p>
         <p>&#8220;He explained Google AdWords to me for two hours. I still do not know what it is, but apparently I am Number One at certain times on certain devices.&#8221;<br><b>~ Dr. Ahmed Salamat</b></p></div>
       <div class="box"><h3>Our Values</h3><p class="mission" style="font-style:normal;font-weight:bold">Integrity. excellence. Integrity (it is that important). Synergy. Values.<br><span style="font-weight:normal;font-size:14px">We value our Values. Its as simple as that.<br>Im done explaning myself to all the haters .</span></p></div>
       <div class="box rant"><h3>A Message From John: Why We Will NEVER Use A.I. Slop</h3>
@@ -498,7 +498,7 @@
   document.querySelectorAll('img[data-sprite]').forEach(i=>i.src=sprite(i.dataset.sprite));
   (()=>{const k=document.querySelector('img[data-sprite="knight"]');if(!k)return;const F=[-1,0,1,0].map(dx=>sprite('knight',dx));let f=0,last=scrollY;
     const step=()=>{f=(f+1)%F.length;k.src=F[f]};
-    if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(step,380);
+    setInterval(step,380);
     addEventListener('scroll',()=>{if(Math.abs(scrollY-last)>36){last=scrollY;step()}},{passive:true})})();
   /* ---------- tiled backgrounds, all drawn here: 1 clouds, 2 pixel logo, 3 flames ---------- */
   const BG=[];
