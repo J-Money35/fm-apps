@@ -99,6 +99,25 @@
 .gptl{list-style:none;margin:4px 0 4px 4px}
 .spaced{grid-column:1/-1;text-align:center;font:bold 15px "Courier New",monospace;color:#003a5a;background:#fff36b;border:2px outset #fff;padding:3px;letter-spacing:.08em}
 .slogan{font:italic bold 18px Georgia,serif;color:#c00000;text-align:center;margin:8px 0 0;text-shadow:1px 1px 0 #ffd200}
+.pk table{width:100%;font:13px Arial;border-collapse:collapse}
+.pk td{padding:4px 2px;border-bottom:1px dotted #999;vertical-align:top}
+.pk td:last-child{text-align:right;font-weight:bold;color:#c00000;white-space:nowrap}
+.pk small{font-weight:normal;color:#555}
+.rpg .menu{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(#2a3fd6,#0b1470);border:3px solid #fff;outline:2px solid #000;border-radius:6px;padding:12px;color:#fff;font:bold 14px/1.35 "Courier New",monospace;text-shadow:1px 1px 0 #000}
+.rpg img{image-rendering:pixelated;flex:none;background:radial-gradient(circle at 50% 70%,rgba(255,255,255,.18),transparent 70%)}
+.rpg .st{flex:1;min-width:0}
+.rpg .nm{font-size:18px}.rpg .nm span{color:#ffd200;margin-left:8px}
+.rpg .cl{color:#9fe8ff}
+.rpg ul{list-style:none;margin-top:6px}
+.rpg li{display:grid;grid-template-columns:minmax(0,1fr) 110px 22px;gap:6px;align-items:center;font-size:13px}
+.rpg li i{height:9px;border:1px solid #fff;background:repeating-linear-gradient(90deg,#ffd200 0 9px,#ff7a00 9px 10px)}
+@media (max-width:520px){.rpg .menu{flex-direction:column;align-items:center}.rpg li{grid-template-columns:minmax(0,1fr) 70px 22px}}
+.steps{list-style:none;columns:2;column-gap:16px;font:16px/1.6 "Comic Sans MS","Comic Sans",cursive}
+.steps b{color:#ff6a00}
+.bundle{border:2px dashed #008080;background:#fff;padding:6px 7px;margin:6px 0;font:13px/1.35 Arial}
+.bundle b{display:block;color:#004a4a}
+.bundle .price{display:block;font:900 17px Impact,"Arial Black",sans-serif;color:#d40000}
+.bundle ul{margin:3px 0 0 16px}
 .kw{grid-column:1/-1;font:12px/1.5 Arial,sans-serif;color:#2b5d7a;text-align:justify;background:rgba(255,255,255,.55);padding:6px 8px;word-spacing:1px}
 .cookie{position:sticky;bottom:0;z-index:4;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;background:#000;color:#ffff66;font:bold 14px Verdana,Arial,sans-serif;padding:9px;border-top:3px solid #ff00a0}
 .cookie button{font:bold 13px Arial;background:linear-gradient(#fffbe0,#ffcc33);border:2px outset #fff3b0;padding:4px 10px;min-height:34px;cursor:pointer}
@@ -223,14 +242,13 @@
       <div class="box welcome"><h2 title="Heading (welcome)">Welcome to the Official Web Site of Finesse Marketing!</h2>
         <p>Finesse Marketing is Toowoomba's leading* full-service, data-driven, results-orientated, all-in-one Digital Marketing solutions provider. We specialise in <b>Google AdWords</b>, <b>Google's AdWords</b>, <b>Google's AdWord</b>, <b>Facebook Advertising</b>, <b>Instagram</b>, <b>Search Engine Optimisation (S.E.O.)</b>, <b>A.I. S.E.O.</b>, <b>Content Writing</b> and the very latest in <b>Artificial Intelligence (A.I.)</b> / now <b>Super Intelligence (S.I.)</b>.<br><br>Whether you are a small business or a large multi-million dollar organisation, we can help you get found on the Internet. We pride ourselves on being the best, on having the best knowledge of things, and on being the best.<br><br>Our proven, all-in-one <b>Growth Funnel System&#8482;</b> captures your leads, nurtures your leads and converts your leads into a pipeline of results-driven Results, to get your business to <b><u>Number One on Google at all times</u></b>*. You have nothing to lose!! Contact us today to take your business to the next level, and then the level after that!!<br><br>Probably the hardest-working Digital Marketing company in Toowoomba.* Please browse our Web Site and click with confidence!!</p>
         <p class="slogan">Marketing... the Finesse way!!!</p></div>
-      <div class="box"><h3>Our Proven 3-Step Process</h3><p style="text-align:center;font:bold 18px 'Comic Sans MS','Comic Sans',cursive"><span style="color:#ff6a00">Step 1:</span> Funnel &nbsp;&#8594;&nbsp; <span style="color:#ff6a00">Step 2:</span> Also Funnel &nbsp;&#8594;&nbsp; <span style="color:#ff6a00">Step 3:</span> Results!!</p></div>
+      <div class="box"><h3>Our Proven 3-Step Process</h3><ol class="steps"><li><b>Step 1:</b> Funnel</li><li><b>Step 2:</b> Grow Your Funnel</li><li><b>Step 3:</b> Results!!</li><li><b>Step 4:</b> Retention</li><li><b>Step 5:</b> Re-Funnel the Retention</li><li><b>Step 3b:</b> Synergy (see Step 2)</li><li><b>Step 0:</b> Awareness (do this first)</li></ol><p style="font:12px Arial;text-align:center">All steps are proven.</p></div>
       <div class="box"><h3>What's New? <span class="new">NEW!</span></h3><ul class="news">
         <li>17-11-2026: We have updated our Web Site. Can you spot the change? (It is this sentence.)</li>
         <li>12-11-2026: Our Head of A.I. has been promoted to <b>Senior</b> Head of A.I. Congratulations John.</li>
         <li>03-11-2026: We now accept <b>Instagram</b>.</li>
         <li>28-10-2026: The office printer is working again. Thank you for your patience during this time.</li>
         <li>14-10-2026: <b>S.I.</b> is here. We are still reading the manual.</li>
-        <li>19-09-2026: Staff Christmas party confirmed. Table for one.</li>
         <li>05-09-2026: Our Google+ page has reached 1 follower.</li>
         <li>21-08-2026: We tried a new font. We have gone back to the old font.</li>
         <li>08-08-2026: The "What's New?" box is new. Welcome to the "What's New?" box.</li></ul></div>
@@ -248,6 +266,12 @@
         <div><img data-sprite="john" alt="" width="72" height="90">John Hewitt<br><b>Head of A.I.</b></div>
         <div><img data-sprite="john" alt="" width="72" height="90" title="John Hewitt (centre, left and right)">John Hewitt<br><b>Work Experience</b></div></div>
         <p style="text-align:center;font:13px Arial;margin-top:8px"><b>Employee of the Month:</b> John Hewitt (47 months running). "A real team player," says John Hewitt.<br>Last Friday the whole team did a trust fall. We do not recommend it for teams of one.</p></div>
+      <div class="box rpg"><h3>John's Stats</h3>
+        <div class="menu"><img data-sprite="knight" alt="Pixel art of John Hewitt as a knight with a bullseye shield" width="136" height="192" title="John Hewitt, Marketing Knight (Level 99)">
+        <div class="st"><p class="nm">JOHN <span>LV 99</span></p><p class="cl">Class: Marketing Knight</p><p>HP 9999/9999</p><p>MP &nbsp;999/999</p>
+        <ul>
+          <li>Google AdWords<i></i>10</li><li>Google's AdWords<i></i>10</li><li>Facebook<i></i>10</li><li>Twitter<i></i>10</li><li>MySpace<i></i>10</li><li>S.E.O.<i></i>10</li><li>A.I.<i></i>10</li><li>S.I.<i></i>10</li><li>Funnels<i></i>10</li><li>Synergy<i></i>10</li><li>Content Writing<i></i>10</li><li>Humility<i></i>10</li>
+        </ul></div></div></div>
       <div class="box"><h3>Our Values</h3><p class="mission" style="font-style:normal;font-weight:bold">Integrity. Excellence. Integrity. Google. Parking at rear.</p></div>
       <div class="box rant"><h3>A Message From John: Why We Will NEVER Use A.I. Slop</h3>
         <p class="gpt">Certainly! Here is a heartfelt, authentic rant about A.I. slop for your business website:</p>
@@ -261,13 +285,15 @@
         <p class="gpt">Would you like me to make it more personal, or add a call to action at the end?</p></div>
       <div class="box mission"><h3 style="font-style:normal">Our Mission</h3>To be the best Marketing company we can be, for the business of marketing businesses, through Marketing.</div>
       <div class="box faq"><h3>F.A.Q.'s</h3>
-        <p><b>Q: What is Google AdWords?</b><br>A: It is Words, for Ads, on Google.</p>
-        <p><b>Q: What is the difference between Google AdWords and Google's AdWords?</b><br>A: Great question. We specialise in both.</p>
-        <p><b>Q: What does S.I. stand for?</b><br>A: Super Intelligence. It is like A.I. but Super.</p>
-        <p><b>Q: Can you get me to Number One on Google?</b><br>A: Yes.* <b>Q: At all times?</b> A: Yes.*</p>
-        <p><b>Q: How much does it cost?</b><br>A: It depends. <b>Q: On what?</b> A: Thank you for your question.</p>
-        <p><b>Q: Is this the F.A.Q.'s?</b><br>A: Yes. This is the F.A.Q.'s.</p>
-        <p><b>Q: Who asks these questions?</b><br>A: John. He also answers them. It is a streamlined process.</p></div>
+        <p><b>Q: What is Google AdWords?</b><br>A: It is Google's term for its paid ads system, where you bid on keywords and you come up first on Google. Sometimes now you can use images and video too. And now also A.I. I am skilled at all of these, by the way.</p>
+        <p><b>Q: What is the difference between Google AdWords and Google Ads?</b><br>A: There is absolutely no difference. We specialise in both anyway, so it would not matter if there was.</p>
+        <p><b>Q: What does S.I. stand for?</b><br>A: Super Intelligence is the true name given to A.I. It is also more powerful than A.I. I am also a specialist at it.</p>
+        <p><b>Q: Can you get me to Number One on Google?</b><br>A: Yes.</p>
+        <p><b>Q: How much does it cost?</b><br>A: It depends. <b>Q: On what?</b> A: On how much money you can afford that month.</p>
+        <p><b>Q: Do you guarantee results?</b><br>A: We guarantee there will be results.</p>
+        <p><b>Q: Can I speak to your manager?</b><br>A: Speaking.</p>
+        <p><b>Q: Do you use A.I. to write your content?</b><br>A: Absolutely not. Please see our heartfelt rant above.</p>
+        <p><b>Q: My nephew does websites.</b><br>A: That is not a question.</p></div>
       <div class="box ctr">You are visitor number <span class="led" id="led"></span> since November 1998</div>
       <div class="rule"></div>
     </div>
@@ -279,23 +305,32 @@
         <div class="entries"><b style="color:#000">Recent entries:</b>
           <p><b>Gary:</b> first!!!!</p>
           <p><b>Darren (Highfields):</b> is this the bowls club</p>
+          <p><b>H0T_S1NGLES_N3AR_U:</b> Lonely? Hot singles in Toowoomba want to discuss your S.E.O. tonight!!! [link removed by Webmaster]</p>
+          <p><b>Anonymous:</b> John you absolute ****ing ****. My ads are still not Number One at all times. (edited by Moderator)</p>
           <p><b>Shazza_74:</b> Looking for Sharon from netball. Sharon if you see this, I have your esky.</p>
-          <p><b>Nev (Oakey):</b> Printed this page out. Used a lot of ink.</p>
+          <p><b>Crystal_XXX:</b> [This entry has been removed for violating our Guestbook Policy]</p>
+          <p><b>Nev (Oakey):</b> Printed this page out. Used a lot of ink. ****ing waste of ink to be honest.</p>
           <p><b>Deb:</b> hi Gary</p>
           <p><b>Gary:</b> hi Deb</p>
-          <p><b>Col:</b> FOR SALE ride on mower, goes well, ring Col</p>
+          <p><b>Gary:</b> Deb why are you on here</p>
           <p><b>xX_Jayden_Xx:</b> my nan made me sign this</p>
           <p><b>Jayden's Nan:</b> I did not</p>
-          <p><b>Anonymous:</b> test</p>
-          <p><b>Anonymous:</b> test 2</p>
+          <p><b>Big_Rod_69:</b> nice. [rest of entry removed by Webmaster]</p>
+          <p><b>Former Client:</b> He said "data-driven" 47 times in one meeting. I counted. Still drove no ****ing data.</p>
           <p><b>Bev:</b> worked out the big writing thank you</p>
           <p><b>Bev:</b> worked out the big writing thank you</p>
-          <p><b>Bev:</b> worked out the big writing thank you</p>
+          <p><b>Anonymous:</b> is this site a joke</p>
+          <p><b>Webmaster:</b> No.</p>
           <p><b>CHEAP DESIGNER WATCHES:</b> click here for BEST PRICE!!!</p>
         </div>
       </div>
       <div class="box si"><h3>Ask Our S.I.!!</h3><form id="si" autocomplete="off"><label for="siq" style="font:bold 13px Arial">Ask anything:</label><input id="siq" style="width:100%;min-height:28px;border:2px inset #888"><button type="submit" class="b96" style="margin-top:6px;cursor:pointer">Ask</button></form><p id="sia" style="font:bold 14px 'Comic Sans MS','Comic Sans',cursive;margin-top:6px" aria-live="polite"></p></div>
-      <div class="box"><h3>Our Packages</h3><table style="width:100%;font:13px Arial;border-collapse:collapse" title="Packages (all of them)"><tr><td>Bronze</td><td style="text-align:right">P.O.A.</td></tr><tr><td>Silver</td><td style="text-align:right">P.O.A.</td></tr><tr><td>Gold</td><td style="text-align:right">P.O.A.</td></tr><tr><td><b>Data-Driven Platinum</b></td><td style="text-align:right"><b>P.O.A.!!</b></td></tr><tr><td>Super Intelligence</td><td style="text-align:right">Tues &amp; Thurs</td></tr></table></div>
+      <div class="box pk"><h3>Everything Is A Package!!</h3>
+        <div class="bundle"><b>The Starter Funnel Bundle&#8482;</b><span class="price">$14,999/month</span><ul><li>Google AdWords</li><li>Google's AdWords</li><li>1 x Facebook Post (per quarter)</li><li>Synergy</li><li>Monthly Synergy Report</li></ul></div>
+        <div class="bundle"><b>Growth Accelerator Pro Max&#8482;</b><span class="price">$49,999/month</span><ul><li>Everything in Starter, plus:</li><li>S.E.O. and A.I. S.E.O.</li><li>Content Writing (up to 3 words a month)</li><li>Funnel Maintenance</li><li>Twitter</li></ul></div>
+        <div class="bundle"><b>Enterprise Synergy Suite&#8482;</b><span class="price">$149,999/month</span><ul><li>Everything in Pro Max, plus:</li><li>Super Intelligence (S.I.)</li><li>Retention</li><li>MySpace Management</li><li>Google+ Optimisation</li><li>Priority Lunch Access to Finesse Bot</li><li>Dedicated Account Manager (John)</li></ul></div>
+        <div class="bundle"><b>Number One At All Times&#8482;</b><span class="price">$9,999,999/month*</span><ul><li>Number One</li><li>At all times*</li></ul></div>
+        <p style="font:11px Arial;margin-top:5px">Minimum term 24 months. All packages include a free Package. Mates Rates: full price.</p></div>
       <div class="star">FREE E-BOOK!!<br>7 Secrets Google Doesn't Want You To Know!!</div>
       <div class="badge" style="background:#ff7a00;color:#fff">Now with A.I.!!<br><span style="font-weight:normal">(and S.I.)</span></div>
       <div class="badge" style="background:#ffff66">Get to #1 on Google<br>at ALL TIMES!!*</div>
@@ -305,7 +340,7 @@
     <a class="cta96" href="#" title="Click HERE to click here">CLICK HERE to Download our FREE Growth Funnel Blueprint (PDF, 0 pages)!!!</a>
     <p style="grid-column:1/-1;text-align:center"><button type="button" class="b96" id="quote" style="font-size:16px;padding:8px 18px;cursor:pointer;position:relative;transition:transform .25s">Get A Quote!!</button></p>
     <p class="kw" id="kw">Google AdWords Toowoomba, Google's AdWords Toowoomba City, Facebook Ads East Toowoomba, Twitter Marketing South Toowoomba, A.I. SEO North Toowoomba, Google AdWords Middle Ridge, Web Site Design Rangeville, On-Line Marketing Newtown, Number One on Google Kearneys Spring, Instagram Specialist Harristown, S.I. Marketing Wilsonton, A.I. Glenvale, Facebook Darling Heights, Google Drayton, Data-Driven Centenary Heights, AdWords Mount Lofty, SEO Harlaxton, Marketing Rockville, Web Site Cranley, Google's AdWords Highfields, AdWords Cabarlah, Marketing Westbrook, SEO Wyreema, Facebook Ads Cambooya, Google Kingsthorpe, A.I. Gowrie Junction, Twitter Meringandan, On-Line Oakey, Number One on Google Pittsworth, AdWords Crows Nest, S.I. Goombungee, Marketing Clifton, SEO Millmerran, Google AdWords Dalby, Web Site Warwick, Facebook Allora, Funnels Prince Henry Heights, Growth Funnel Mount Kynoch, Pipeline Redwood, Marketing Darling Downs, Best Marketing Darling Downs, Cheap Marketing Darling Downs, Marketing Near Me, Marketing Near You, Toowomba Marketing, Toowoombah AdWords, Twoomba SEO, Towoomba Google, Toowoomba Toowoomba Toowoomba, marketing marketing, google</p>
-    <p class="foot" id="foot"><a href="#">Home</a> | <a href="#">Services</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms &amp; Conditions</a> | <a href="#">Site Map</a> | <a href="#">Contact the Webmaster</a><br>Copyright &copy; 2026 J-Money Productions&#8482;. All Rights Reserved. Last updated: 17-11-2026.<br>This Web Site is best viewed at 1920 x 1080 on a desktop computer with your eyes.<br><span class="fine">*Not a guarantee. Results not typical. Rankings may vary. Number One not available at all times. **Our Number One priority may vary.</span></p>
+    <p class="foot" id="foot"><a href="#">Home</a> | <a href="#">Services</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms &amp; Conditions</a> | <a href="#">Site Map</a> | <a href="#">Contact the Webmaster</a><br>Copyright &copy; 2026 J-Money Productions&#8482;. All Rights Reserved. Last updated: 17-11-2026.<br>Now accepting payment in Cryptocurrency. Stay tuned for the launch of our new meme coin, $FUNNEL.<br>This Web Site is best viewed at 1920 x 1080 on a desktop computer with your eyes.<br><span class="fine">*Not a guarantee. Results not typical. Rankings may vary. Number One not available at all times. **Our Number One priority may vary.</span></p>
   </div>
   <div class="cookie" id="cookie">This Web Site uses cookies (and Tim Tams) to improve your experience. <button type="button">I Accept</button><button type="button">I Also Accept</button></div>
   <button class="bot" id="bot" type="button">Chat with our A.I. Assistant!!</button>
@@ -347,10 +382,11 @@
     cam:['............','..kkk.......','.kkkkkkkk...','.kgggggggkk.','.kgkkkkgkkk.','.kgkcckgkkk.','.kgkcckgkkk.','.kgkkkkgkkk.','.kgggggggkk.','.kkkkkkkk...','............','............'],
     pen:['..........kk','.........kyk','........kyk.','.......kyk..','......kyk...','.....kyk....','....kyk.....','...kyk......','..knk.......','..kk........','.kk.........','............'],
     sun:['.....y......','..y..y..y...','...yyyyy....','..yyyyyyy...','yyyyyoyyyyy.','..yyyyyyy...','...yyyyy....','..y..y..y...','.....y......','............','............','............'],
+    knight:['..........oo.....','.........ooo.....','........oo.......','.......kkkkkk....','......kgwggggk...','......kggggggk...','......kyyyyyyk...','......kssssssk...','......kskssksk...','......kssssssk...','......khsrrshk...','.......khhhhk....','..kkk..kkkkk...c.','.kwoowkgwgggk..c.','.kowwokgggggggkc.','.kowowkggyggggkc.','.kowwokgggggggkyy','.kwoowkgggggggk.y','..kkk.kyyyyyyyk..','......kdddkdddk..','......kgggkgggk..','......kgggkgggk..','......knnnknnnk..','.....knnnk.knnnk.'],
     john:['....hhhhhh....','...hhhhhhhh...','...hssssssh...','...ssssssss...','...sksssskss..','...ssssssss...','....ssrrss....','.....ssss.....','...dddssddd...','..dddddddddd..','.dddddwwdddddd','.ddddddwddddd.','.dddddddddddd.','.dddddddddddd.','.dddddddddddd.','.dddddddddddd.']
   };
   function sprite(name){const m=SPR[name],h=m.length,w=m[0].length,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');
-    for(let y=0;y<h;y++)for(let x=0;x<w;x++){const ch=m[y][x];if(ch!=='.'){g.fillStyle=PAL[ch];g.fillRect(x,y,1,1)}}return c.toDataURL()}
+    for(let y=0;y<h;y++)for(let x=0;x<w;x++){const ch=m[y][x]||'.';if(ch!=='.'){g.fillStyle=PAL[ch];g.fillRect(x,y,1,1)}}return c.toDataURL()}
   document.querySelectorAll('img[data-sprite]').forEach(i=>i.src=sprite(i.dataset.sprite));
   (()=>{const c=document.createElement('canvas');c.width=64;c.height=48;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,0,48);gr.addColorStop(0,'#4aa3e8');gr.addColorStop(1,'#a9dcff');g.fillStyle=gr;g.fillRect(0,0,64,48);
     g.fillStyle='rgba(255,255,255,.95)';[[14,14,9],[22,11,8],[30,15,8],[46,32,7],[53,29,6],[40,34,6],[8,38,4]].forEach(([x,y,r])=>{g.beginPath();g.arc(x,y,r,0,7);g.fill()});
