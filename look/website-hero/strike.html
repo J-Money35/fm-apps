@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Strike: website idea for Finesse Marketing</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4vw;align-items:center;padding:110px var(--pad) 60px;overflow:hidden}
+.copy{position:relative;z-index:2;display:grid;gap:24px;max-width:600px}
+h1{font-weight:600;font-size:clamp(46px,6.4vw,104px);line-height:.98;letter-spacing:-.035em}
+h1 span{display:block}
+h1 em{font-style:normal;color:var(--orange)}
+.board{position:relative;justify-self:center;width:min(100%,640px);aspect-ratio:280/224}
+.board svg{width:100%;height:100%;overflow:visible;display:block}
+.board .hit{cursor:crosshair}
+.rings{fill:var(--white)}
+.arrow{fill:var(--orange)}
+.ripple{fill:none;stroke:var(--orange);stroke-width:1.2;opacity:0}
+.game{position:absolute;left:0;right:0;bottom:-70px;display:flex;justify-content:center;align-items:center;gap:14px;font:500 13px var(--mono);color:var(--mute);letter-spacing:.04em;text-align:center}
+.game button{white-space:nowrap;background:none;border:1px solid #3a3a3f;color:var(--white);font:500 12px var(--mono);letter-spacing:.06em;border-radius:999px;padding:0 14px;min-height:44px;cursor:pointer}
+.game button:hover{border-color:var(--orange)}
+.game button:focus-visible{outline:2px solid var(--orange-hi);outline-offset:3px}
+.score{position:absolute;left:50%;top:6%;transform:translateX(-50%);font:600 15px var(--display);color:var(--orange);white-space:nowrap;opacity:0;transition:opacity .25s ease-out}
+.score.on{opacity:1}
+/* entrance: armed after load */
+.js #dart{transform:translate(-620px,-242px);opacity:0}
+.js .trail{transform:scaleX(0);opacity:0}
+.go #dart{transform:none;opacity:1;transition:transform .62s cubic-bezier(.45,.05,.7,1),opacity .12s linear}
+.go .trail{transform:none;opacity:1;transition:transform .5s cubic-bezier(.16,1,.3,1) .62s,opacity .2s linear .62s}
+.go .ripple.r1{animation:rip 1.3s cubic-bezier(.16,1,.3,1) .6s 1 both}
+.go .ripple.r2{animation:rip 1.6s cubic-bezier(.16,1,.3,1) .72s 1 both}
+.go .ripple.r3{animation:rip 1.9s cubic-bezier(.16,1,.3,1) .86s 1 both}
+.go .rings{animation:thud .26s ease-out .6s 1}
+.trail{transform-box:fill-box;transform-origin:100% 100%}
+@keyframes rip{0%{r:6px;opacity:.9;stroke-width:3}100%{r:240px;opacity:0;stroke-width:.4}}
+@keyframes thud{0%{transform:translate(0,0)}30%{transform:translate(2.2px,1px)}60%{transform:translate(-1px,-.5px)}100%{transform:none}}
+.js .copy>:not(h1){opacity:0;transform:translateY(12px)}
+.go .copy>*{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s cubic-bezier(.16,1,.3,1);transition-delay:calc(.15s + var(--i)*.08s)}
+.thrown{transition:transform .32s cubic-bezier(.45,.05,.7,1)}
+@media (prefers-reduced-motion:reduce){
+  .js #dart,.js .trail,.js .copy>*{transform:none!important;opacity:1!important;transition:none!important}
+  .go .ripple,.go .rings{animation:none!important}
+  .thrown{transition:none}
+}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);padding-top:88px;gap:20px;align-content:start}
+  .copy{display:contents}
+  .copy .eyebrow{order:1}.copy h1{order:2}.board{order:3;width:min(82vw,360px);margin:6px 0 48px}.copy .ctas{order:4}.copy .lead{order:5}
+  .game{bottom:-52px;font-size:12px}
+}
+</style>
+<script>document.documentElement.className+=' js';addEventListener('load',()=>requestAnimationFrame(()=>requestAnimationFrame(()=>document.documentElement.classList.add('go'))));setTimeout(()=>document.documentElement.classList.add('go'),2500)</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="fm-head"><a class="logo" href="#" aria-label="Finesse Marketing home"><img src="assets/fm-refresh-horizontal-reversed.svg" alt="Finesse Marketing" width="152" height="30"></a>
+<nav class="fm-nav" aria-label="Main"><a href="#">Services</a><a href="#">Work</a><a href="#">About</a><a class="btn btn-primary" href="#">Start an enquiry</a></nav></header>
+<main id="main">
+<section class="hero">
+  <div class="copy">
+    <p class="eyebrow" style="--i:0">Senior marketing · Toowoomba</p>
+    <h1 style="--i:1"><span>Aim first.</span><em>Then spend.</em></h1>
+    <p class="lead" style="--i:2">I'm John Hewitt. Before a dollar goes into ads, I make sure the offer, the website and the tracking are ready to hit. Strategy, paid campaigns, websites and AI automation for established businesses.</p>
+    <div class="ctas" style="--i:3"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
+  </div>
+  <div class="board">
+    <svg viewBox="-165 -112 280 224" role="img" aria-label="The Finesse Marketing bullseye, with an orange dart landing in the centre.">
+      <g class="hit">
+        <circle r="128" fill="transparent"/>
+        <circle class="ripple r1" r="6"/><circle class="ripple r2" r="6"/><circle class="ripple r3" r="6"/>
+        <path class="rings" d="M100 0C100 55.23 55.23 100 0 100C-55.23 100 -100 55.23 -100 0C-100 -2.04 -99.94 -4.07 -99.82 -6.09Q-88.52 -4.77 -77.22 -3.57C-77.27 -2.39 -77.3 -1.2 -77.3 0C-77.3 42.690 -42.69 77.3 0 77.3C42.69 77.3 77.3 42.69 77.3 0C77.3 -42.69 42.69 -77.3 0 -77.3C-18.18 -77.3 -34.9 -71.02 -48.1 -60.51Q-55.4 -69.23 -62.58 -78.01C-45.44 -91.77 -23.68 -100 0 -100C55.23 -100 100 -55.23 100 0ZM54.5 0C54.5 30.1 30.1 54.5 0 54.5C-30.1 54.5 -54.5 30.1 -54.5 0C-54.5 -0.42 -54.5 -0.84 -54.49 -1.26Q-43.24 -0.17 -31.99 0.81C-31.56 18.11 -17.4 32 0 32C17.670 32 32 17.67 32 0C32 -17.67 17.67 -32 0 -32C-6.93 -32 -13.35 -29.8 -18.59 -26.05Q-26.03 -34.54 -33.36 -43.1C-24.14 -50.25 -12.57 -54.5 0 -54.5C30.1 -54.5 54.5 -30.1 54.5 0Z"/>
+        <path class="arrow trail" d="M-114 -11Q-55 -21.4 0.5 0.2Q-56.7 -3.99 -114 -11Z"/>
+        <path class="arrow trail" d="M-74 -87Q-38.17 -42.54 0.5 0.2Q-51.5 -31.2 -74 -87Z"/>
+        <g id="dart"><path class="arrow" d="M-144.02 -58.81 -131.72 -63.07 -128.45 -69.49 -132.23 -81.95Q-132.3 -82.19 -132.19 -82.41Q-132.07 -82.62 -131.83 -82.7Q-131.6 -82.77 -131.39 -82.66L-109.69 -71.6Q-109.47 -71.49 -109.39 -71.27L-104.4 -57.23L-11.01 -6.29Q-10.8 -6.17 -10.73 -5.93Q-10.66 -5.69 -10.78 -5.47Q-10.89 -5.26 -11.12 -5.19Q-11.34 -5.11 -11.56 -5.22L-107.66 -50.82L-121.96 -46.61Q-122.19 -46.54 -122.4 -46.65L-144.1 -57.71Q-144.32 -57.82 -144.4 -58.06Q-144.47 -58.29 -144.36 -58.52Q-144.25 -58.73 -144.02 -58.81Z"/></g>
+        <g id="thrown"></g>
+      </g>
+    </svg>
+    <p class="score" aria-live="polite"></p>
+    <div class="game"><span class="ghint">Fancy a throw? Click the board.</span><button type="button" class="throw">Throw a dart</button></div>
+  </div>
+</section>
+</main>
+<div class="mock-tag">Mock-up, sample words</div>
+<script>
+(()=>{
+  const svg=document.querySelector('.board svg'),hit=svg.querySelector('.hit'),thrownG=document.getElementById('thrown');
+  const score=document.querySelector('.score'),hint=document.querySelector('.ghint'),btn=document.querySelector('.throw');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(matchMedia('(hover: none)').matches){hint.textContent='Fancy a throw? Tap the board.'}
+  const D=document.querySelector('#dart path').getAttribute('d');
+  let darts=[],total=0;
+  function zone(r){return r<=32?['Bullseye',50]:r<=54.5?['Inner ring',25]:r<=77.3?['Close',15]:r<=100?['Outer ring',10]:['Missed the board',0]}
+  function say(t){score.textContent=t;score.classList.add('on')}
+  function reset(){darts.forEach(d=>d.remove());darts=[];total=0;btn.textContent='Throw a dart';hint.textContent=matchMedia('(hover: none)').matches?'Fancy a throw? Tap the board.':'Fancy a throw? Click the board.'}
+  function throwAt(x,y){
+    if(darts.length>=3){reset()}
+    const wob=()=>(Math.random()-.5)*16;x+=wob();y+=wob();
+    const g=document.createElementNS('http://www.w3.org/2000/svg','g');
+    const inner=document.createElementNS('http://www.w3.org/2000/svg','g');
+    inner.setAttribute('transform',`translate(${x} ${y}) scale(.42) translate(11 5.9)`);
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',D);p.setAttribute('class','arrow');
+    inner.appendChild(p);g.appendChild(inner);g.classList.add('thrown');
+    g.style.transform='translate(-260px,-101px)';g.style.opacity='0';
+    thrownG.appendChild(g);darts.push(g);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{g.style.transform='none';g.style.opacity='1'}));
+    const [name,pts]=zone(Math.hypot(x,y));total+=pts;
+    setTimeout(()=>{
+      say(`${name}${pts?' · '+pts:''}`);
+      if(darts.length===3){
+        hint.textContent=total>=90?`${total} from three. Good aim. Imagine it on your ad budget.`:`${total} from three. Your ad budget deserves better aim.`;
+        btn.textContent='Go again';
+      }else{hint.textContent=`Dart ${darts.length} of 3`}
+    },reduce?0:320);
+  }
+  hit.addEventListener('click',e=>{
+    const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const q=pt.matrixTransform(svg.getScreenCTM().inverse());
+    throwAt(q.x,q.y);
+  });
+  btn.addEventListener('click',()=>{if(darts.length>=3){reset();return}const a=Math.random()*Math.PI*2,r=Math.random()*95;throwAt(Math.cos(a)*r,Math.sin(a)*r)});
+  window.__demo=()=>{setTimeout(()=>throwAt(40,-30),2600);setTimeout(()=>throwAt(-12,14),3600);setTimeout(()=>throwAt(3,-2),4600)};
+})();
+</script>
+<a href="./" style="position:fixed;left:10px;bottom:10px;z-index:91;font:500 13px/1 system-ui,sans-serif;background:rgba(0,0,0,.7);color:#eee;padding:9px 12px;border-radius:999px;text-decoration:none">&larr; All ideas</a>
+</body>
+</html>

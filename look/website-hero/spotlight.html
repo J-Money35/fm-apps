@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Spotlight: website idea for Finesse Marketing</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+.hero{position:relative;min-height:100svh;overflow:hidden;display:grid;align-items:center;padding:110px var(--pad) 70px;--x:72%;--y:46%;--r:clamp(220px,28vw,430px)}
+.wall,.lit{position:absolute;inset:-2% -4%;display:flex;flex-direction:column;justify-content:center;gap:.06em;font-weight:700;font-size:clamp(46px,8.4vw,150px);line-height:.98;letter-spacing:-.04em;white-space:nowrap;user-select:none;pointer-events:none}
+.wall span,.lit span{display:block}
+.wall span:nth-child(even),.lit span:nth-child(even){padding-left:22vw}
+.wall{color:#18181b}
+.lit{color:var(--orange);opacity:.95;-webkit-mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 0,#000 30%,rgba(0,0,0,.5) 60%,transparent 80%);mask-image:radial-gradient(circle var(--r) at var(--x) var(--y),#000 0,#000 30%,rgba(0,0,0,.5) 60%,transparent 80%)}
+.beam{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle calc(var(--r)*1.5) at var(--x) var(--y),rgba(255,236,214,.13),rgba(255,236,214,.04) 45%,transparent 72%)}
+.floor{position:absolute;left:10%;right:10%;bottom:-18vh;height:36vh;border-radius:50%;background:radial-gradient(closest-side,rgba(237,116,26,.22),transparent);filter:blur(10px);pointer-events:none}
+.scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,11,.92) 0,rgba(10,10,11,.75) 38%,transparent 62%);pointer-events:none}
+.copy{position:relative;z-index:2;display:grid;gap:24px;max-width:620px}
+h1{font-weight:600;font-size:clamp(40px,5.2vw,84px);line-height:1.01;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--orange)}
+.hint{position:absolute;right:var(--pad);bottom:28px;font:500 12px var(--mono);color:var(--mute);letter-spacing:.06em;z-index:2}
+.js .copy>:not(h1){opacity:0}
+.go .copy>*{opacity:1;transition:opacity .9s ease-out;transition-delay:calc(.2s + var(--i)*.12s)}
+.js .lit,.js .beam{opacity:0}
+.go .lit{opacity:.95;transition:opacity 1.2s ease-out .1s}.go .beam{opacity:1;transition:opacity 1.2s ease-out .1s}
+@media (prefers-reduced-motion:reduce){.js .copy>*,.js .lit,.js .beam{transition:none!important}.go .copy>*{opacity:1}}
+@media (max-width:760px){
+  .hero{align-items:start;padding-top:100px;--r:150px}
+  .wall,.lit{font-size:16vw;justify-content:flex-end;padding-bottom:14vh}
+  .wall span:nth-child(even),.lit span:nth-child(even){padding-left:12vw}
+  .scrim{background:linear-gradient(180deg,rgba(10,10,11,.94) 0,rgba(10,10,11,.8) 52%,transparent 72%)}
+  .hint{left:20px;right:auto}
+}
+</style>
+<script>document.documentElement.className+=' js';addEventListener('load',()=>requestAnimationFrame(()=>document.documentElement.classList.add('go')));setTimeout(()=>document.documentElement.classList.add('go'),2500)</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="fm-head"><a class="logo" href="#" aria-label="Finesse Marketing home"><img src="assets/fm-refresh-horizontal-reversed.svg" alt="Finesse Marketing" width="152" height="30"></a>
+<nav class="fm-nav" aria-label="Main"><a href="#">Services</a><a href="#">Work</a><a href="#">About</a><a class="btn btn-primary" href="#">Start an enquiry</a></nav></header>
+<main id="main">
+<section class="hero" id="hero">
+  <div class="wall" aria-hidden="true"><span>tracking, fixed.</span><span>campaigns, rescued.</span><span>websites, rebuilt.</span><span>budgets, found.</span><span>AI, put to work.</span><span>straight answers.</span></div>
+  <div class="lit" aria-hidden="true"><span>tracking, fixed.</span><span>campaigns, rescued.</span><span>websites, rebuilt.</span><span>budgets, found.</span><span>AI, put to work.</span><span>straight answers.</span></div>
+  <div class="beam" aria-hidden="true"></div>
+  <div class="floor" aria-hidden="true"></div>
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="copy">
+    <p class="eyebrow" style="--i:0">Senior marketing · Toowoomba</p>
+    <h1 style="--i:1">The one you call when it <em>has to be right.</em></h1>
+    <p class="lead" style="--i:2">I'm John Hewitt. When the tracking doesn't add up, the ads stop working or the website lets you down, I find out why and fix it. Strategy, paid ads, websites and AI automation, with a straight answer every time.</p>
+    <div class="ctas" style="--i:3"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
+  </div>
+  <p class="hint" aria-hidden="true">Move the light</p>
+</section>
+</main>
+<div class="mock-tag">Mock-up, sample words</div>
+<script>
+(()=>{
+  const h=document.getElementById('hero');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const phone=matchMedia('(max-width: 760px)').matches;
+  let W,H,x,y,tx,ty,mode='auto',t0=performance.now(),raf=0,vis=true;
+  function size(){const b=h.getBoundingClientRect();W=b.width;H=b.height}
+  function put(){h.style.setProperty('--x',x+'px');h.style.setProperty('--y',y+'px')}
+  size();x=tx=W*(phone?.6:.72);y=ty=H*(phone?.78:.46);put();
+  if(reduce)return;
+  if(matchMedia('(hover: none)').matches)document.querySelector('.hint').textContent='Drag to move the light';
+  function tick(now){
+    if(mode==='auto'){const t=(now-t0)/1000;tx=W*(phone?.5+.32*Math.sin(t*.5):.66+.24*Math.sin(t*.42));ty=H*(phone?.76+.12*Math.sin(t*.9+1):.5+.3*Math.sin(t*.77+1.2));}
+    x+=(tx-x)*.07;y+=(ty-y)*.07;put();raf=vis?requestAnimationFrame(tick):0;
+  }
+  raf=requestAnimationFrame(tick);
+  h.addEventListener('pointermove',e=>{const b=h.getBoundingClientRect();mode='hand';tx=e.clientX-b.left;ty=e.clientY-b.top});
+  h.addEventListener('pointerleave',()=>{mode='auto';t0=performance.now()-3000});
+  addEventListener('resize',size);
+  new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis&&!raf)raf=requestAnimationFrame(tick)}).observe(h);
+})();
+</script>
+<a href="./" style="position:fixed;left:10px;bottom:10px;z-index:91;font:500 13px/1 system-ui,sans-serif;background:rgba(0,0,0,.7);color:#eee;padding:9px 12px;border-radius:999px;text-decoration:none">&larr; All ideas</a>
+</body>
+</html>

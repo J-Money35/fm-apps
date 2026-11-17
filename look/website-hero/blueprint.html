@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Blueprint: website idea for Finesse Marketing</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+.hero{position:relative;min-height:100svh;overflow:hidden}
+.grid{min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:5vw;align-items:center;padding:110px var(--pad) 70px}
+.copy{display:grid;gap:24px;max-width:620px}
+h1{font-weight:600;font-size:clamp(40px,5.2vw,86px);line-height:1;letter-spacing:-.035em}
+h1 em{font-style:normal;color:var(--orange)}
+.work{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;max-height:70vh;justify-self:end;width:min(100%,460px);background:linear-gradient(160deg,#2a2a2e,#151517);box-shadow:0 40px 100px -30px rgba(0,0,0,.9)}
+.work .ph{position:absolute;inset:0;display:grid;place-items:center;font:500 12px var(--mono);letter-spacing:.14em;color:#77736e}
+.work .cap{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(transparent,rgba(0,0,0,.75));display:grid;gap:4px}
+.work .cap b{font-size:20px;font-weight:600}.work .cap span{font-size:14px;color:#cfcac4}
+.work .tagx{position:absolute;top:16px;left:16px;font:500 12px var(--mono);letter-spacing:.1em;background:var(--orange);color:#0A0A0B;padding:5px 9px;border-radius:4px}
+/* the plan layer (made by script from the finished layer) */
+.plan{position:absolute;inset:0;z-index:5;pointer-events:none;background-color:#0b0b0d;background-image:linear-gradient(rgba(237,116,26,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(237,116,26,.09) 1px,transparent 1px),linear-gradient(rgba(237,116,26,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(237,116,26,.04) 1px,transparent 1px);background-size:96px 96px,96px 96px,24px 24px,24px 24px;clip-path:inset(var(--cut,0%) 0 0 0)}
+.plan *{color:transparent!important;text-shadow:none!important;box-shadow:none!important;border-color:rgba(237,116,26,.55)!important}
+.plan .fm-plan-box{outline:1px dashed rgba(237,116,26,.7);outline-offset:4px;position:relative}
+.plan h1,.plan .lead{background:repeating-linear-gradient(to bottom,rgba(237,116,26,.22) 0 .62em,transparent .62em 1em)}
+.plan .lead{background:repeating-linear-gradient(to bottom,rgba(237,116,26,.18) 0 .85em,transparent .85em 1.55em)}
+.plan .btn{background:transparent!important;outline:1px dashed rgba(237,116,26,.8)}
+.plan .work{background:transparent;outline:1px dashed rgba(237,116,26,.8)}
+.plan .work::before,.plan .work::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),rgba(237,116,26,.4) 50%,transparent calc(50% + 1px)),linear-gradient(to bottom right,transparent calc(50% - 1px),rgba(237,116,26,.4) 50%,transparent calc(50% + 1px))}
+.plan .work .cap,.plan .work .tagx{background:transparent}
+.plan .fm-plan-box::after{content:attr(data-spec);position:absolute;left:0;top:-22px;font:500 11px/1 var(--mono);letter-spacing:.06em;color:#ff9a4d!important;white-space:nowrap}
+.plan .fm-head img{opacity:.0}
+.scan{position:absolute;left:0;right:0;top:0;transform:translateY(var(--cutpx,0px));z-index:6;height:2px;background:var(--orange);box-shadow:0 0 24px 3px rgba(237,116,26,.7);pointer-events:none}
+.scan span{position:absolute;right:var(--pad);top:8px;font:500 12px var(--mono);letter-spacing:.1em;color:var(--orange)}
+.done .scan{opacity:0;transition:opacity .4s ease-out}
+.replay{position:absolute;left:var(--pad);bottom:24px;z-index:7;background:none;border:1px solid #3a3a3f;border-radius:999px;color:var(--white);font:500 12px var(--mono);letter-spacing:.06em;min-height:44px;padding:0 16px;cursor:pointer;display:none}
+.js .replay{display:inline-block}
+.replay:hover{border-color:var(--orange)}.replay:focus-visible{outline:2px solid var(--orange-hi);outline-offset:3px}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr);padding-top:92px;gap:30px;align-content:start}.work{justify-self:stretch;width:100%;aspect-ratio:4/3}.replay{position:relative;left:auto;bottom:auto;margin:0 20px 30px}}
+</style>
+<script>document.documentElement.className+=' js'</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="fm-head"><a class="logo" href="#" aria-label="Finesse Marketing home"><img src="assets/fm-refresh-horizontal-reversed.svg" alt="Finesse Marketing" width="152" height="30"></a>
+<nav class="fm-nav" aria-label="Main"><a href="#">Services</a><a href="#">Work</a><a href="#">About</a><a class="btn btn-primary" href="#">Start an enquiry</a></nav></header>
+<main id="main">
+<section class="hero" id="hero">
+  <div class="grid" id="real">
+    <div class="copy">
+      <p class="eyebrow" data-spec="label · mono 12">Senior marketing · Toowoomba</p>
+      <h1 data-spec="H1 · Outfit 600 · one clear promise">Planned like an engineer. <em>Finished like a designer.</em></h1>
+      <p class="lead" data-spec="lead · who, what, for whom">I'm John Hewitt. Every campaign, site and automation starts as a plan you can read, then gets finished to a standard you can see. Strategy, paid ads, websites and AI automation for established businesses.</p>
+      <div class="ctas" data-spec="one primary action"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
+    </div>
+    <figure class="work" data-spec="proof · real work, not stock">
+      <span class="tagx">Case study</span>
+      <span class="ph">PHOTO PLACEHOLDER</span>
+      <figcaption class="cap"><b>Client project</b><span>Real work goes here at launch</span></figcaption>
+    </figure>
+  </div>
+  <div class="scan" aria-hidden="true"><span>RENDERING</span></div>
+  <button class="replay" type="button">Show the plan</button>
+</section>
+</main>
+<div class="mock-tag">Mock-up, sample words</div>
+<script>
+(()=>{
+  const hero=document.getElementById('hero'),real=document.getElementById('real'),btn=hero.querySelector('.replay');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const boot=()=>{
+  const plan=document.createElement('div');plan.className='plan';plan.setAttribute('aria-hidden','true');plan.inert=true;
+  const clone=real.cloneNode(true);clone.removeAttribute('id');
+  clone.querySelectorAll('[data-spec]').forEach(el=>el.classList.add('fm-plan-box'));
+  clone.querySelectorAll('a,button').forEach(a=>{const sp=document.createElement('span');sp.className=a.className;sp.textContent=a.textContent;a.replaceWith(sp)});
+  plan.appendChild(clone);hero.insertBefore(plan,hero.firstChild.nextSibling);
+  let cut=0,anim=0;
+  function set(v){cut=v;hero.style.setProperty('--cut',v+'%');hero.style.setProperty('--cutpx',(v/100*hero.offsetHeight)+'px');hero.classList.toggle('done',v>=99.5)}
+  function run(from,to,ms,delay){
+    cancelAnimationFrame(anim);const t0=performance.now()+delay;
+    const step=now=>{const k=Math.min(1,Math.max(0,(now-t0)/ms));const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;set(from+(to-from)*e);if(k<1)anim=requestAnimationFrame(step)};
+    anim=requestAnimationFrame(step);
+  }
+  if(reduce){set(100)}else{set(0);const go=()=>run(0,100,2600,900);document.readyState==='complete'?go():addEventListener('load',go)}
+  btn.addEventListener('click',()=>{
+    const toPlan=cut>50;btn.textContent=toPlan?'Show the finished page':'Show the plan';
+    if(reduce){set(toPlan?0:100);return}
+    run(cut,toPlan?0:100,1400,0);
+  });
+  };
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(boot);
+})();
+</script>
+<a href="./" style="position:fixed;left:10px;bottom:10px;z-index:91;font:500 13px/1 system-ui,sans-serif;background:rgba(0,0,0,.7);color:#eee;padding:9px 12px;border-radius:999px;text-decoration:none">&larr; All ideas</a>
+</body>
+</html>

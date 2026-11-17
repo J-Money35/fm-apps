@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>X-ray: website idea for Finesse Marketing</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:5vw;align-items:center;padding:110px var(--pad) 60px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 78% 50%,rgba(237,116,26,.12),transparent 70%);pointer-events:none}
+.copy{position:relative;display:grid;gap:24px;max-width:600px}
+h1{font-weight:600;font-size:clamp(38px,4.6vw,72px);line-height:1.03;letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--orange)}
+.toggle{justify-self:start;display:inline-flex;align-items:center;gap:10px;background:none;border:0;color:var(--white);font:500 13px var(--mono);letter-spacing:.06em;cursor:pointer;padding:6px 0;min-height:44px}
+.toggle .sw{width:34px;height:20px;border-radius:20px;background:#2a2a2e;position:relative;transition:background .2s}
+.toggle .sw::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--white);transition:transform .2s ease-out}
+.toggle[aria-pressed=true] .sw{background:var(--orange)}
+.toggle[aria-pressed=true] .sw::after{transform:translateX(14px)}
+.toggle:focus-visible{outline:2px solid var(--orange-hi);outline-offset:4px}
+/* the client site */
+.stage{position:relative;justify-self:stretch}
+.frame{position:relative;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 40px 120px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06);aspect-ratio:16/11;touch-action:pan-y;cursor:none}
+.bar{position:absolute;inset:0 0 auto;height:34px;background:#ECEAE6;display:flex;align-items:center;gap:7px;padding:0 12px;z-index:3}
+.bar i{width:10px;height:10px;border-radius:50%;background:#cfcac4}
+.bar span{margin-left:14px;flex:1;max-width:60%;height:20px;border-radius:6px;background:#fff;font:500 11px/20px var(--mono);color:#888;padding-left:10px}
+.layer{position:absolute;inset:34px 0 0;display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto 1fr auto;gap:0}
+.layer>*{position:relative}
+.s-nav{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;padding:3.2% 4.5%}
+.s-logo{font:700 clamp(11px,1.15vw,17px) var(--display);letter-spacing:-.01em}
+.s-links{display:flex;gap:1.4em;font-size:clamp(9px,.85vw,13px)}
+.s-hero{padding:4% 4.5% 4%;display:flex;flex-direction:column;justify-content:center;gap:1.1em}
+.s-h{font:700 clamp(16px,2.2vw,34px)/1.05 var(--display);letter-spacing:-.02em}
+.s-p{font-size:clamp(9px,.85vw,13px);line-height:1.5;max-width:26em}
+.s-btns{display:flex;gap:.7em;flex-wrap:wrap}
+.s-btn{font:600 clamp(9px,.85vw,13px)/1 var(--display);padding:.9em 1.3em;border-radius:6px}
+.s-img{margin:4% 4.5% 4% 0;border-radius:10px;overflow:hidden}
+.s-form{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr) auto;gap:2%;padding:3% 4.5% 4%;align-items:end}
+.s-f{display:grid;gap:.4em;font-size:clamp(8px,.75vw,11px)}
+.s-f b{height:clamp(22px,2.3vw,34px);border-radius:5px;display:block}
+/* paint layer: a plain, decent small-business site */
+.paint{background:#fff;color:#1d2430}
+.paint .s-links{color:#4a5363}
+.paint .s-p{color:#4a5363}
+.paint .s-btn.a{background:#1f6feb;color:#fff}
+.paint .s-btn.b{background:#eef2f7;color:#1d2430}
+.paint .s-img{background:linear-gradient(135deg,#c9d6e3,#8ea6bd);display:grid;place-items:center}
+.paint .s-img span{font:500 11px var(--mono);color:#fff;letter-spacing:.08em;opacity:.9}
+.paint .s-form{background:#f4f6f9}
+.paint .s-f b{background:#fff;border:1px solid #d6dbe3}
+/* wiring layer */
+.wire{background:#0D0D0F;color:#cfcac4;background-image:linear-gradient(rgba(237,116,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(237,116,26,.07) 1px,transparent 1px);background-size:22px 22px;z-index:2}
+.wire .s-nav,.wire .s-hero,.wire .s-img,.wire .s-form,.wire .s-btn,.wire .s-f b{outline:1px dashed rgba(237,116,26,.55);outline-offset:-1px}
+.wire .s-logo,.wire .s-h{color:#5a5650}
+.wire .s-links,.wire .s-p{color:#4a4743}
+.wire .s-btn{color:#ff9a4d;background:rgba(237,116,26,.08)}
+.wire .s-img{background:rgba(255,255,255,.02);display:grid;place-items:center}
+.wire .s-f b{background:rgba(255,255,255,.02)}
+.tag{position:absolute;z-index:2;font:500 clamp(8px,.72vw,11px)/1.25 var(--mono);color:#0A0A0B;background:var(--orange);padding:.35em .6em;border-radius:3px;white-space:nowrap;letter-spacing:.02em}
+.tag.dim{background:#1b1b1e;color:#ff9a4d;border:1px solid rgba(237,116,26,.5)}
+.code{font:500 clamp(8px,.72vw,11px)/1.55 var(--mono);color:#cfcac4;white-space:pre;padding:6% 8%}
+.code b{color:var(--orange);font-weight:500}
+/* lens */
+.wire,.toggle,.hint{display:none!important}
+.js .hint{display:block!important}
+.js .wire{display:grid!important;clip-path:circle(var(--r,0px) at var(--x,50%) var(--y,50%))}
+.js .toggle{display:inline-flex!important}
+.js .frame.full .wire{--r:140%!important}
+.lens{position:absolute;z-index:4;left:0;top:0;width:calc(var(--r)*2);height:calc(var(--r)*2);margin:calc(var(--r)*-1) 0 0 calc(var(--r)*-1);border-radius:50%;pointer-events:none;box-shadow:0 0 0 2px var(--orange),0 0 0 7px rgba(237,116,26,.18),0 20px 60px rgba(0,0,0,.45);transform:translate(var(--x),var(--y));display:none}
+.lens .mark{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;overflow:visible}
+.js .lens{display:block}
+.frame.full .lens{opacity:0}
+.hint{position:absolute;left:0;right:0;bottom:-34px;text-align:center;font:500 12px var(--mono);color:var(--mute);letter-spacing:.06em}
+@media (prefers-reduced-motion:reduce){.toggle .sw,.toggle .sw::after{transition:none}}
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);padding-top:88px;gap:18px;align-content:start}
+  .copy{display:contents}
+  .copy .eyebrow{order:1}.copy h1{order:2}.stage{order:3;margin:8px 0 34px}.copy .ctas{order:4}.copy .lead{order:5}.copy .toggle{order:6}
+  .frame{aspect-ratio:4/3.6;cursor:auto}
+  .layer{grid-template-columns:1fr;grid-template-rows:auto auto 1fr auto}
+  .s-img{margin:0 4.5%;min-height:70px}
+  .s-form{grid-template-columns:1fr 1fr}
+  .s-form .s-f:nth-child(3){display:none}
+  .hint{bottom:-30px}
+}
+</style>
+<script>document.documentElement.className+=' js'</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="fm-head"><a class="logo" href="#" aria-label="Finesse Marketing home"><img src="assets/fm-refresh-horizontal-reversed.svg" alt="Finesse Marketing" width="152" height="30"></a>
+<nav class="fm-nav" aria-label="Main"><a href="#">Services</a><a href="#">Work</a><a href="#">About</a><a class="btn btn-primary" href="#">Start an enquiry</a></nav></header>
+<main id="main">
+<section class="hero">
+  <div class="copy">
+    <p class="eyebrow">Tracking you can trust</p>
+    <h1>I check the wiring, <em>not just the paint.</em></h1>
+    <p class="lead">Most marketing looks fine from the outside. I'm John Hewitt, and I start underneath: tags, tracking and conversions checked before a dollar goes into ads. Then strategy, campaigns, websites and AI automation, built on numbers that are true.</p>
+    <div class="ctas"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
+    <button class="toggle" type="button" aria-pressed="false" aria-controls="frame"><span class="sw" aria-hidden="true"></span>Show all the wiring</button>
+  </div>
+  <div class="stage">
+    <div class="frame" id="frame" role="img" aria-label="Illustration: a small business website, with a lens showing the tracking set-up underneath each button and form.">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>yourbusiness.com.au</span></div>
+      <div class="layer paint" aria-hidden="true">
+        <div class="s-nav"><span class="s-logo">Your Business</span><span class="s-links"><span>Services</span><span>About</span><span>Contact</span></span></div>
+        <div class="s-hero"><div class="s-h">Local service,<br>done properly.</div><div class="s-p">Friendly team, fair prices and same-week bookings across the region.</div><div class="s-btns"><span class="s-btn a">Book now</span><span class="s-btn b">Call us</span></div></div>
+        <div class="s-img"><span>PHOTO PLACEHOLDER</span></div>
+        <div class="s-form"><span class="s-f">Name<b></b></span><span class="s-f">Email<b></b></span><span class="s-f">Suburb<b></b></span><span class="s-btn a">Get a quote</span></div>
+      </div>
+      <div class="layer wire" aria-hidden="true">
+        <div class="s-nav"><span class="s-logo">Your Business</span><span class="s-links"><span>Services</span><span>About</span><span>Contact</span></span><span class="tag dim" style="right:4.5%;top:100%">GTM container loaded &#10003;</span></div>
+        <div class="s-hero"><div class="s-h">Local service,<br>done properly.</div><div class="s-p">Friendly team, fair prices and same-week bookings across the region.</div><div class="s-btns" style="position:relative"><span class="s-btn a">Book now</span><span class="s-btn b">Call us</span><span class="tag" style="left:0;top:118%">Ads conversion: booking &#183; primary &#10003;</span><span class="tag dim" style="left:0;top:178%">Phone number clicks &#10003;</span></div></div>
+        <div class="s-img"><div class="code">dataLayer.push({
+  <b>event</b>: 'generate_lead',
+  form: 'quote',
+  value: 1,
+  dedupe_id: 'q-7f3a'
+});</div></div>
+        <div class="s-form"><span class="s-f">Name<b></b></span><span class="s-f">Email<b></b></span><span class="s-f">Suburb<b></b></span><span class="s-btn a">Get a quote</span><span class="tag" style="left:4.5%;bottom:calc(100% - 4px)">GA4 generate_lead &#183; counted once &#10003;</span><span class="tag dim" style="right:4.5%;bottom:calc(100% - 4px)">Meta Lead &#183; server-side &#10003;</span></div>
+      </div>
+      <div class="lens" aria-hidden="true"><svg class="mark" viewBox="-100 -100 200 200" aria-hidden="true"><path fill="#F5F2EE" d="M100 0C100 55.23 55.23 100 0 100C-55.23 100 -100 55.23 -100 0C-100 -2.04 -99.94 -4.07 -99.82 -6.09Q-88.52 -4.77 -77.22 -3.57C-77.27 -2.39 -77.3 -1.2 -77.3 0C-77.3 42.69 -42.69 77.3 0 77.3C42.69 77.3 77.3 42.69 77.3 0C77.3 -42.69 42.69 -77.3 0 -77.3C-18.18 -77.3 -34.9 -71.02 -48.1 -60.51Q-55.4 -69.23 -62.58 -78.01C-45.44 -91.77 -23.68 -100 0 -100C55.23 -100 100 -55.23 100 0ZM54.5 0C54.5 30.1 30.1 54.5 0 54.5C-30.1 54.5 -54.5 30.1 -54.5 0C-54.5 -0.42 -54.5 -0.84 -54.49 -1.26Q-43.24 -0.17 -31.99 0.81C-31.56 18.11 -17.4 32 0 32C17.67 32 32 17.67 32 0C32 -17.67 17.67 -32 0 -32C-6.93 -32 -13.35 -29.8 -18.59 -26.05Q-26.03 -34.54 -33.36 -43.1C-24.14 -50.25 -12.57 -54.5 0 -54.5C30.1 -54.5 54.5 -30.1 54.5 0Z"/><path fill="#ED741A" d="M-144.02 -58.81 -131.72 -63.07 -128.45 -69.49 -132.23 -81.95Q-132.3 -82.19 -132.19 -82.41Q-132.07 -82.62 -131.83 -82.7Q-131.6 -82.77 -131.39 -82.66L-109.69 -71.6Q-109.47 -71.49 -109.39 -71.27L-104.4 -57.23L-11.01 -6.29Q-10.8 -6.17 -10.73 -5.93Q-10.66 -5.69 -10.78 -5.47Q-10.89 -5.26 -11.12 -5.19Q-11.34 -5.11 -11.56 -5.22L-107.66 -50.82L-121.96 -46.61Q-122.19 -46.54 -122.4 -46.65L-144.1 -57.71Q-144.32 -57.82 -144.4 -58.06Q-144.47 -58.29 -144.36 -58.52Q-144.25 -58.73 -144.02 -58.81ZM-114 -11Q-55 -21.4 0.5 0.2Q-56.7 -3.99 -114 -11ZM-74 -87Q-38.17 -42.54 0.5 0.2Q-51.5 -31.2 -74 -87Z"/></svg></div>
+    </div>
+    <p class="hint" aria-hidden="true">Your cursor is the lens: move it over the site to see what I see</p>
+  </div>
+</section>
+</main>
+<div class="mock-tag">Mock-up, sample words</div>
+<script>
+(()=>{
+  const f=document.getElementById('frame'),lens=f.querySelector('.lens'),wire=f.querySelector('.wire'),btn=document.querySelector('.toggle');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W,H,R,x,y,tx,ty,mode='auto',t0=performance.now(),raf=0,visible=true;
+  function size(){const b=f.getBoundingClientRect();W=b.width;H=b.height;R=Math.round(Math.max(62,Math.min(120,W*.15)));f.style.setProperty('--r',R+'px');}
+  function park(){tx=W*.36;ty=H*.86;if(x==null){x=tx;y=ty}}
+  function set(){wire.style.setProperty('--x',x+'px');wire.style.setProperty('--y',(y-34)+'px');wire.style.setProperty('--r',R+'px');lens.style.setProperty('--x',x+'px');lens.style.setProperty('--y',y+'px');}
+  function tick(now){
+    if(mode==='auto'){const t=(now-t0)/1000;tx=W*(.5+.33*Math.sin(t*.55));ty=H*(.56+.26*Math.sin(t*1.1+.6));}
+    x+=(tx-x)*.12;y+=(ty-y)*.12;set();
+    raf=visible?requestAnimationFrame(tick):0;
+  }
+  size();park();set();
+  addEventListener('resize',()=>{size();if(reduce)park();set()});
+  if(matchMedia('(hover: none)').matches)document.querySelector('.hint').textContent='Drag the lens across the site to see what I see';
+  if(!reduce){
+    raf=requestAnimationFrame(tick);
+    f.addEventListener('pointermove',e=>{const b=f.getBoundingClientRect();mode='hand';tx=e.clientX-b.left;ty=Math.max(34,e.clientY-b.top);});
+    f.addEventListener('pointerleave',()=>{mode='auto';t0=performance.now()-2000});
+    new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf)raf=requestAnimationFrame(tick)}).observe(f);
+  }else{
+    f.addEventListener('click',e=>{const b=f.getBoundingClientRect();x=e.clientX-b.left;y=Math.max(34,e.clientY-b.top);set()});
+  }
+  btn.addEventListener('click',()=>{const on=btn.getAttribute('aria-pressed')!=='true';btn.setAttribute('aria-pressed',on);f.classList.toggle('full',on);});
+})();
+</script>
+<a href="./" style="position:fixed;left:10px;bottom:10px;z-index:91;font:500 13px/1 system-ui,sans-serif;background:rgba(0,0,0,.7);color:#eee;padding:9px 12px;border-radius:999px;text-decoration:none">&larr; All ideas</a>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ninety-six: website idea for Finesse Marketing</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+main{position:relative;overflow:hidden}
+/* ---------- today ---------- */
+.now{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);grid-template-rows:1fr auto;column-gap:4vw;padding:120px var(--pad) 40px;background:radial-gradient(70% 60% at 75% 55%,rgba(237,116,26,.16),transparent 65%),var(--ink)}
+.copy{align-self:center;display:grid;gap:26px;max-width:640px}
+.now h1{font-weight:600;font-size:clamp(42px,5.6vw,96px);line-height:.98;letter-spacing:-.035em}
+.now h1 em{font-style:normal;color:var(--orange)}
+.board{position:relative;z-index:45;align-self:center;justify-self:center;width:min(100%,560px);aspect-ratio:280/224}
+.board svg{width:100%;height:100%;overflow:visible;display:block}
+.rings{fill:var(--white)}.arrow{fill:var(--orange)}
+.ripple{fill:none;stroke:var(--orange);stroke-width:1.2;opacity:0}
+.hit{cursor:crosshair}
+.js .rings,.js .trail{opacity:0}
+.struck .rings{opacity:1;transition:opacity .25s ease-out}
+.struck .trail{opacity:1;transition:opacity .3s ease-out .1s}
+.struck .r1{animation:rip 1.3s cubic-bezier(.16,1,.3,1) 1 both}.struck .r2{animation:rip 1.6s cubic-bezier(.16,1,.3,1) .12s 1 both}.struck .r3{animation:rip 1.9s cubic-bezier(.16,1,.3,1) .25s 1 both}
+.struck .rings{animation:thud .26s ease-out 1}
+@keyframes rip{0%{r:6px;opacity:.95;stroke-width:3}100%{r:260px;opacity:0;stroke-width:.4}}
+@keyframes thud{30%{transform:translate(2.4px,1px)}60%{transform:translate(-1px,-.5px)}100%{transform:none}}
+.score{position:absolute;left:50%;top:2%;transform:translateX(-50%);font:600 15px var(--display);color:var(--orange);white-space:nowrap;opacity:0;transition:opacity .25s}
+.score.on{opacity:1}
+.thrown{transition:transform .32s cubic-bezier(.45,.05,.7,1)}
+.eras{grid-column:1/-1;display:flex;list-style:none;border-top:1px solid var(--line);margin-top:24px}
+.eras li{flex:1;padding:14px 0 0;font:500 12px/1.5 var(--mono);color:var(--mute);letter-spacing:.06em;position:relative}
+.eras li b{display:block;font:600 15px var(--display);color:var(--white);letter-spacing:0}
+.eras li::before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#3a3a3f}
+.eras li:last-child::before{background:var(--orange);box-shadow:0 0 0 5px rgba(237,116,26,.2)}
+.eras li:last-child b{color:var(--orange)}
+.tools{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:18px;font:500 12px var(--mono);color:var(--mute)}
+.replay{display:none;background:none;border:1px solid #3a3a3f;border-radius:999px;color:var(--white);font:500 12px var(--mono);letter-spacing:.06em;min-height:44px;padding:0 16px;cursor:pointer}
+.js .replay{display:inline-flex;align-items:center}
+.replay:hover{border-color:var(--orange)}.replay:focus-visible{outline:2px solid var(--orange-hi);outline-offset:3px}
+/* ---------- 1996 ---------- */
+.then{display:none}
+.js .then{display:block;position:absolute;inset:0;z-index:40;clip-path:inset(0 0 0 var(--cut,0px));overflow:hidden;color:#000;font-family:"Times New Roman",Times,serif;
+  background-color:#000058;background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#ffff66 1px,transparent 1.5px);background-size:47px 53px,83px 71px;background-position:0 0,21px 33px}
+.then.fall{transform:translateY(115%) rotate(7deg);transform-origin:100% 0;transition:transform .9s cubic-bezier(.55,0,.85,.35)}
+.then.gone{visibility:hidden}
+.w{max-width:1180px;margin:0 auto;padding:max(10px,2vh) 14px 20px;display:grid;grid-template-columns:170px minmax(0,1fr) 210px;gap:10px}
+.mq{grid-column:1/-1;background:#ff0000;color:#ffff00;font:bold 17px "Courier New",monospace;white-space:nowrap;overflow:hidden;padding:4px 0;border:3px outset #ff9999}
+.mq span{display:inline-block;padding-left:100%;animation:mq 16s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.top{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:18px;padding:4px 0}
+.dart96{width:96px;height:96px;flex:none;border-radius:50%;background:repeating-radial-gradient(circle,#ff6600 0 9px,#ffffff 9px 18px,#000 18px 20px);border:4px ridge #ffcc00;box-shadow:4px 4px 0 #000;animation:spin96 2.2s linear infinite;position:relative}
+.dart96::after{content:"";position:absolute;left:-26px;top:20px;width:70px;height:5px;background:#ff00ff;transform:rotate(26deg);box-shadow:-8px -3px 0 2px #00ff00}
+@keyframes spin96{to{transform:rotateY(360deg)}}
+.wordart{font:900 clamp(30px,4.6vw,64px)/1 Impact,"Arial Black",sans-serif;letter-spacing:.02em;background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00ff00,#00ffff,#ff00ff);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1.5px #000;filter:drop-shadow(4px 4px 0 #000);transform:perspective(300px) rotateX(14deg) skewX(-8deg);text-align:center}
+.tm{font:bold 14px Arial;color:#ffff00;align-self:flex-start}
+.uc{grid-column:1/-1;padding:6px;text-align:center;font:bold 18px Arial,sans-serif;background:repeating-linear-gradient(45deg,#ffd800 0 14px,#000 14px 28px);border:2px solid #000}
+.uc span{background:#ffd800;padding:2px 12px}
+.nav{background:#000;border:3px ridge #00ff00;padding:10px;display:flex;flex-direction:column;gap:5px}
+.nav b{color:#00ff00;font:bold 15px "Courier New",monospace;text-align:center;margin-bottom:4px}
+.nav u{display:block;color:#00ffff;font-size:16px}
+.nav u:nth-child(3n){color:#ff00ff}.nav u:nth-child(4n){color:#ffff00}
+.nav .b96{margin-top:6px}
+.b96{display:block;font:bold 12px Arial;background:#c0c0c0;border:2px outset #fff;padding:3px 6px;text-align:center;color:#000}
+.mid{display:grid;gap:8px;align-content:start}
+.box{background:#c0c0c0;border:3px ridge #fff;padding:8px 10px;font-size:15px}
+.hi{font:bold 26px "Comic Sans MS","Comic Sans",cursive;color:#ff00ff;text-shadow:2px 2px 0 #00ffff;text-align:center}
+.new{display:inline-block;background:#ff0000;color:#fff;font:bold 12px Arial;padding:1px 5px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{visibility:hidden}}
+.ctr{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;font-size:16px}
+.led{display:inline-flex;gap:2px;background:#000;padding:3px;border:2px inset #888}
+.led i{font:bold 22px "Courier New",monospace;color:#00ff00;background:#002200;padding:0 3px;font-style:normal;text-shadow:0 0 6px #00ff00}
+.svc{width:100%;border-collapse:separate;border-spacing:4px;font:bold 14px Arial}
+.svc td{padding:5px 6px;border:2px outset #fff;text-align:center}
+.svc tr:nth-child(1) td:nth-child(1){background:#00ff00}.svc tr:nth-child(1) td:nth-child(2){background:#ff00ff;color:#fff}.svc tr:nth-child(1) td:nth-child(3){background:#ffff00}
+.svc tr:nth-child(2) td:nth-child(1){background:#00ffff}.svc tr:nth-child(2) td:nth-child(2){background:#ff6600;color:#fff}.svc tr:nth-child(2) td:nth-child(3){background:#ff99ff}
+.flame{height:12px;background:linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#ff9900,#ff0000);background-size:60px 100%;animation:fl .6s linear infinite;border:1px solid #000}
+@keyframes fl{to{background-position:60px 0}}
+.gb{font-size:14px;line-height:1.35}.gb i{color:#000080}
+.side{display:grid;gap:8px;align-content:start}
+.badge{font:bold 13px/1.15 Arial,sans-serif;text-align:center;padding:7px 6px;border:3px outset #fff}
+.cool{background:linear-gradient(#fff6a0,#ffcc00);color:#990000;border-color:#ffe066;transform:rotate(-3deg)}
+.y2k{background:#000;color:#00ff00;font-family:"Courier New",monospace;border-color:#00ff00}
+.free{background:#ffff00;color:#ff0000;font:900 24px Impact,sans-serif;clip-path:polygon(50% 0,61% 18%,82% 10%,79% 32%,100% 38%,83% 54%,96% 74%,73% 75%,68% 98%,50% 84%,32% 98%,27% 75%,4% 74%,17% 54%,0 38%,21% 32%,18% 10%,39% 18%);padding:34px 10px;border:0;animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08) rotate(6deg)}}
+.midi{background:#c0c0c0;border:2px outset #fff;padding:6px;font:12px Arial}
+.midi .bar{height:8px;background:#000080;margin:4px 0;position:relative;overflow:hidden}
+.midi .bar::after{content:"";position:absolute;inset:0;width:30%;background:#00ffff;animation:mb 4s linear infinite}
+@keyframes mb{from{transform:translateX(-100%)}to{transform:translateX(340%)}}
+.click{display:block;background:#0000ff;color:#ffff00;font:bold 16px Arial;text-align:center;padding:8px;border:3px outset #6699ff;animation:blink 1.4s steps(1) infinite}
+.ad468{grid-column:1/-1;justify-self:center;width:min(100%,728px);height:60px;display:grid;place-items:center;border:3px outset #fff;background:repeating-linear-gradient(90deg,#ff00ff 0 40px,#00ffff 40px 80px,#ffff00 80px 120px,#00ff00 120px 160px);font:900 24px Impact,sans-serif;color:#000;text-shadow:2px 2px 0 #fff;letter-spacing:.04em;animation:adbg 1.2s linear infinite}
+@keyframes adbg{to{background-position:160px 0}}
+.extra{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.extra .box{font:14px/1.4 Arial,sans-serif}
+.extra h4{font:bold 15px Arial;margin-bottom:4px;color:#ff0000}
+.extra u{color:#0000ee;display:block}
+.y2kc{font:bold 30px "Courier New",monospace;color:#ff0000;text-align:center;background:#000;border:2px inset #888;padding:2px;text-shadow:0 0 6px #f00}
+.fld{display:block;height:20px;background:#fff;border:2px inset #888;margin:3px 0}
+.env{display:inline-block;width:46px;height:30px;background:#fff;border:2px solid #000;position:relative;animation:spin96 2.6s linear infinite}
+.env::before{content:"";position:absolute;left:0;right:0;top:0;height:0;border-left:21px solid transparent;border-right:21px solid transparent;border-top:15px solid #000}
+.pages{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pages span{font:bold 12px Arial;background:#000;color:#00ff00;border:2px outset #555;padding:3px 6px}
+.foot{grid-column:1/-1;text-align:center;color:#ffff99;font:13px Arial;line-height:1.5}
+.foot u{color:#00ffff}
+.spark{position:absolute;z-index:41;width:9px;height:9px;pointer-events:none;background:radial-gradient(#fff,#ffff00 40%,transparent 70%);border-radius:50%;animation:sp .7s ease-out forwards}
+@keyframes sp{to{transform:translateY(18px) scale(.2);opacity:0}}
+@media (prefers-reduced-motion:reduce){.mq span,.new,.dart96,.flame,.free,.midi .bar::after,.click,.ad468,.env{animation:none}.then.fall{transition:none}.thrown{transition:none}}
+@media (max-width:900px){
+  .now{grid-template-columns:minmax(0,1fr);padding:96px 20px 30px;row-gap:18px}
+  .copy{display:contents}.copy .eyebrow{order:1}.copy h1{order:2}.board{order:3;width:min(86%,340px)}.copy .ctas{order:4}.copy .lead{order:5}.eras{order:6}.tools{order:7}
+  .eras{flex-wrap:wrap;row-gap:14px}.eras li{flex:0 0 50%}
+  .w{grid-template-columns:minmax(0,1fr)}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px 12px}.nav b{width:100%}.nav .b96{display:none}
+  .side{grid-template-columns:1fr 1fr}.free{display:none}
+  .extra{grid-template-columns:1fr 1fr}.ad468{font-size:16px}
+  .dart96{width:56px;height:56px}.top{gap:8px}
+}
+</style>
+<script>document.documentElement.className+=' js'</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="fm-head"><a class="logo" href="#" aria-label="Finesse Marketing home"><img src="assets/fm-refresh-horizontal-reversed.svg" alt="Finesse Marketing" width="152" height="30"></a>
+<nav class="fm-nav" aria-label="Main"><a href="#">Services</a><a href="#">Work</a><a href="#">About</a><a class="btn btn-primary" href="#">Start an enquiry</a></nav></header>
+<main id="main">
+<section class="now" id="now">
+  <div class="copy">
+    <p class="eyebrow">Senior marketing · Toowoomba</p>
+    <h1>The tools keep changing. <em>The judgement doesn't.</em></h1>
+    <p class="lead">I'm John Hewitt. I put the technology of the day to work on your marketing: strategy, paid ads, websites and now AI automation, for established businesses that want it done properly.</p>
+    <div class="ctas"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
+  </div>
+  <div class="board" id="board">
+    <svg viewBox="-165 -112 280 224" role="img" aria-label="The Finesse Marketing bullseye with its orange dart in the centre.">
+      <g class="hit">
+        <circle r="128" fill="transparent"/>
+        <circle class="ripple r1" r="6"/><circle class="ripple r2" r="6"/><circle class="ripple r3" r="6"/>
+        <path class="rings" d="M100 0C100 55.23 55.23 100 0 100C-55.23 100 -100 55.23 -100 0C-100 -2.04 -99.94 -4.07 -99.82 -6.09Q-88.52 -4.77 -77.22 -3.57C-77.27 -2.39 -77.3 -1.2 -77.3 0C-77.3 42.69 -42.69 77.3 0 77.3C42.69 77.3 77.3 42.69 77.3 0C77.3 -42.69 42.69 -77.3 0 -77.3C-18.18 -77.3 -34.9 -71.02 -48.1 -60.51Q-55.4 -69.23 -62.58 -78.01C-45.44 -91.77 -23.68 -100 0 -100C55.23 -100 100 -55.23 100 0ZM54.5 0C54.5 30.1 30.1 54.5 0 54.5C-30.1 54.5 -54.5 30.1 -54.5 0C-54.5 -0.42 -54.5 -0.84 -54.49 -1.26Q-43.24 -0.17 -31.99 0.81C-31.56 18.11 -17.4 32 0 32C17.67 32 32 17.67 32 0C32 -17.67 17.67 -32 0 -32C-6.93 -32 -13.35 -29.8 -18.59 -26.05Q-26.03 -34.54 -33.36 -43.1C-24.14 -50.25 -12.57 -54.5 0 -54.5C30.1 -54.5 54.5 -30.1 54.5 0Z"/>
+        <path class="arrow trail" d="M-114 -11Q-55 -21.4 0.5 0.2Q-56.7 -3.99 -114 -11Z"/>
+        <path class="arrow trail" d="M-74 -87Q-38.17 -42.54 0.5 0.2Q-51.5 -31.2 -74 -87Z"/>
+        <g id="dart"><path class="arrow" d="M-144.02 -58.81 -131.72 -63.07 -128.45 -69.49 -132.23 -81.95Q-132.3 -82.19 -132.19 -82.41Q-132.07 -82.62 -131.83 -82.7Q-131.6 -82.77 -131.39 -82.66L-109.69 -71.6Q-109.47 -71.49 -109.39 -71.27L-104.4 -57.23L-11.01 -6.29Q-10.8 -6.17 -10.73 -5.93Q-10.66 -5.69 -10.78 -5.47Q-10.89 -5.26 -11.12 -5.19Q-11.34 -5.11 -11.56 -5.22L-107.66 -50.82L-121.96 -46.61Q-122.19 -46.54 -122.4 -46.65L-144.1 -57.71Q-144.32 -57.82 -144.4 -58.06Q-144.47 -58.29 -144.36 -58.52Q-144.25 -58.73 -144.02 -58.81Z"/></g>
+        <g id="thrown"></g>
+      </g>
+    </svg>
+    <p class="score" aria-live="polite"></p>
+  </div>
+  <ol class="eras" aria-label="The technology of the day">
+    <li><b>Banner ads</b>the web arrives</li>
+    <li><b>Search ads</b>Google changes everything</li>
+    <li><b>Social</b>every business is a publisher</li>
+    <li><b>AI</b>the tools of today</li>
+  </ol>
+  <div class="tools"><button class="replay" type="button">Visit 1996 again</button><span class="ghint">Fancy a throw? Click the board.</span></div>
+</section>
+<div class="then" id="then" aria-hidden="true">
+  <div class="w">
+    <div class="mq"><span>*** WELCOME TO FINESSE MARKETING ON THE WORLD WIDE WEB *** YOU ARE VISITOR NUMBER 47,318!!! *** NOW OFFERING BANNER ADS AND FAX BLASTS *** SIGN MY GUESTBOOK *** THIS SITE IS Y2K COMPLIANT ***</span></div>
+    <div class="top"><div class="dart96"></div><div class="wordart">Finesse Marketing</div><span class="tm">TM</span><div class="dart96" style="animation-direction:reverse"></div></div>
+    <div class="uc"><span>UNDER CONSTRUCTION: PLEASE PARDON OUR DUST!!</span></div>
+    <div class="nav"><b>~*NAVIGATION*~</b><u>Home</u><u>About Me!!</u><u>Our Services</u><u>Cool Links</u><u>Guestbook</u><u>Awards</u><u>Webrings</u><u>E-mail Me</u><u>Site Map</u><span class="b96">Frames version</span><span class="b96">No-frames version</span><span class="b96">Text only</span></div>
+    <div class="mid">
+      <div class="box"><p class="hi">Hi!! Welcome 2 my HomePage!!</p><p style="text-align:center"><span class="new">NEW!</span> <b>We can now put YOUR business on the INFORMATION SUPERHIGHWAY!!!</b> <span class="new">NEW!</span></p></div>
+      <div class="box ctr">You are visitor number <span class="led" id="led"></span> since 12-03-1996</div>
+      <div class="flame"></div>
+      <div class="box"><b style="font:bold 16px Arial">OUR SERVICES:</b>
+        <table class="svc"><tr><td>Banner Ads (468 x 60!)</td><td>Fax Blasts</td><td>Yellow Pages Listings</td></tr><tr><td>Your Own E-MAIL Address</td><td>Submit to 500+ Search Engines!!</td><td>CD-ROM Brochures</td></tr></table></div>
+      <div class="box gb"><b style="font:bold 16px Arial;color:#ff0000">GUESTBOOK (latest entries):</b><br><i>Kev:</i> kewl site!!! plz add more animated GIFs<br><i>Shaz:</i> my modem took 4 minutes 2 load this page lol<br><i>Webmaster:</i> thanks 4 visiting!! dont 4get to bookmark us</div>
+      <div class="flame"></div>
+    </div>
+    <div class="side">
+      <div class="badge cool">COOL SITE<br>OF THE DAY!!<br>*****</div>
+      <div class="badge y2k">Y2K<br>COMPLIANT</div>
+      <div class="badge free">FREE!!!</div>
+      <div class="midi"><b>Now playing:</b> background_music.mid<div class="bar"></div>[Play] [Stop] [Loop: ON]</div>
+      <span class="click">CLICK HERE!!!</span>
+      <div class="badge" style="background:#00ffff">Best viewed in<br>Netscape 3.0<br>at 800 x 600</div>
+      <div class="badge" style="background:#ff00ff;color:#fff">Join the<br>Darling Downs<br>Business Webring</div>
+    </div>
+    <div class="ad468"><span>YOUR BANNER AD HERE!!! CLICK NOW!!!</span></div>
+    <div class="extra">
+      <div class="box"><h4>HOT LINKS!!</h4><u>Search the Web!</u><u>Free Screensavers</u><u>The Dancing Baby</u><u>Toowoomba Weather</u><u>Download Netscape</u><u>My Other HomePage</u></div>
+      <div class="box"><h4>COUNTDOWN 2 Y2K:</h4><div class="y2kc" id="y2k">1390</div><p style="text-align:center;margin-top:4px">days left!! is YOUR business ready???</p></div>
+      <div class="box"><h4>SIGN MY GUESTBOOK!!</h4>Name:<span class="fld"></span>E-mail:<span class="fld"></span><span class="b96" style="display:inline-block">Submit</span> <span class="b96" style="display:inline-block">Reset</span></div>
+      <div class="box" style="text-align:center"><h4>E-MAIL ME!!</h4><span class="env"></span><p style="margin-top:6px">webmaster@finesse<br>(remove NOSPAM)</p><div class="pages" style="margin-top:6px"><span>WEB 1.0</span><span>HTML 3.2</span><span>NO FRAMES? CLICK HERE</span></div></div>
+    </div>
+    <p class="foot">&lt;&lt; Prev | <u>Random site</u> | Next &gt;&gt;<br>This page has been accessed lots of times. Last updated: 12-03-1996. Copyright 1996 Finesse Marketing. All rights reserved. <u>E-mail the webmaster</u></p>
+  </div>
+</div>
+</main>
+<div class="mock-tag">Mock-up, sample words</div>
+<script>
+(()=>{
+  const then=document.getElementById('then'),board=document.getElementById('board'),svg=board.querySelector('svg'),dart=document.getElementById('dart');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const replay=document.querySelector('.replay'),hint=document.querySelector('.ghint'),score=board.querySelector('.score'),thrownG=document.getElementById('thrown');
+  const DIR=[.931,.364];
+  const led=document.getElementById('led');let visits=47318;
+  function showLed(){led.innerHTML=String(visits).padStart(7,'0').split('').map(c=>'<i>'+c+'</i>').join('')}
+  showLed();if(!reduce)setInterval(()=>{if(then.classList.contains('gone'))return;visits+=1+Math.floor(Math.random()*7);showLed()},140);
+  let lastSp=0;
+  then.addEventListener('pointermove',e=>{if(reduce)return;const n=performance.now();if(n-lastSp<35)return;lastSp=n;const b=then.getBoundingClientRect(),s=document.createElement('i');s.className='spark';s.style.left=(e.clientX-b.left-4)+'px';s.style.top=(e.clientY-b.top-4)+'px';then.appendChild(s);setTimeout(()=>s.remove(),700)});
+  function geom(){const r=svg.getBoundingClientRect(),m=document.getElementById('main').getBoundingClientRect(),sc=r.width/280;return{sc,tipX:r.left-m.left+(165-11)*sc}}
+  let anim=0,running=false;
+  function setCut(px){then.style.setProperty('--cut',Math.max(0,px)+'px')}
+  function strike(){board.classList.remove('struck');void board.offsetWidth;board.classList.add('struck')}
+  function throwIn(delay){
+    running=true;then.classList.remove('fall','gone');board.classList.remove('struck');setCut(0);
+    const g=geom(),D=(g.tipX+120)/DIR[0];
+    dart.style.transform=`translate(${-DIR[0]*D/g.sc}px,${-DIR[1]*D/g.sc}px)`;dart.style.opacity='0';
+    const t0=performance.now()+delay,ms=Math.max(700,Math.min(1100,D*.75));
+    cancelAnimationFrame(anim);
+    const step=now=>{
+      const k=Math.min(1,Math.max(0,(now-t0)/ms));if(now>=t0)dart.style.opacity='1';
+      const e=k*k*(1.6-.6*k),left=D*(1-e);
+      dart.style.transform=`translate(${-DIR[0]*left/g.sc}px,${-DIR[1]*left/g.sc}px)`;
+      setCut(g.tipX-DIR[0]*left);
+      if(k<1){anim=requestAnimationFrame(step);return}
+      strike();setTimeout(()=>{then.classList.add('fall')},140);setTimeout(()=>{then.classList.add('gone');running=false},1100);
+    };
+    anim=requestAnimationFrame(step);
+  }
+  if(reduce){then.classList.add('gone');board.classList.add('struck');replay.textContent='See this page in 1996'}
+  else{const go=()=>throwIn(2200);document.readyState==='complete'?go():addEventListener('load',go)}
+  replay.addEventListener('click',()=>{
+    if(reduce){const show=then.classList.contains('gone');then.classList.toggle('gone',!show);setCut(0);replay.textContent=show?'Back to today':'See this page in 1996';return}
+    if(!running)throwIn(1600);
+  });
+  const RD=dart.querySelector('path').getAttribute('d');let darts=[],total=0;
+  if(matchMedia('(hover: none)').matches)hint.textContent='Fancy a throw? Tap the board.';
+  function zone(r){return r<=32?['Bullseye',50]:r<=54.5?['Inner ring',25]:r<=77.3?['Close',15]:r<=100?['Outer ring',10]:['Missed the board',0]}
+  function throwAt(x,y){
+    if(darts.length>=3){darts.forEach(d=>d.remove());darts=[];total=0}
+    x+=(Math.random()-.5)*16;y+=(Math.random()-.5)*16;
+    const ns='http://www.w3.org/2000/svg',g=document.createElementNS(ns,'g'),inner=document.createElementNS(ns,'g'),p=document.createElementNS(ns,'path');
+    inner.setAttribute('transform',`translate(${x} ${y}) scale(.42) translate(11 5.9)`);p.setAttribute('d',RD);p.setAttribute('class','arrow');inner.appendChild(p);g.appendChild(inner);
+    g.classList.add('thrown');g.style.transform='translate(-260px,-101px)';g.style.opacity='0';thrownG.appendChild(g);darts.push(g);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{g.style.transform='none';g.style.opacity='1'}));
+    const [n,pts]=zone(Math.hypot(x,y));total+=pts;
+    setTimeout(()=>{score.textContent=n+(pts?' · '+pts:'');score.classList.add('on');hint.textContent=darts.length===3?(total>=90?`${total} from three. Good aim. Imagine it on your ad budget.`:`${total} from three. Your ad budget deserves better aim.`):`Dart ${darts.length} of 3`},reduce?0:320);
+  }
+  svg.querySelector('.hit').addEventListener('click',e=>{if(running||!board.classList.contains('struck'))return;const pt=svg.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const q=pt.matrixTransform(svg.getScreenCTM().inverse());throwAt(q.x,q.y)});
+})();
+</script>
+<a href="./" style="position:fixed;left:10px;bottom:10px;z-index:91;font:500 13px/1 system-ui,sans-serif;background:rgba(0,0,0,.7);color:#eee;padding:9px 12px;border-radius:999px;text-decoration:none">&larr; All ideas</a>
+</body>
+</html>

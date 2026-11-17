@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Departure board: website idea for Finesse Marketing</title>
+<link rel="stylesheet" href="assets/base.css">
+<style>
+.hero{position:relative;min-height:100svh;display:grid;align-content:center;gap:26px;padding:120px var(--pad) 70px;overflow:hidden;background:radial-gradient(70% 50% at 50% 100%,rgba(237,116,26,.14),transparent 70%),var(--ink)}
+.line{display:block;font-weight:600;font-size:clamp(40px,6vw,96px);line-height:1;letter-spacing:-.035em}
+.line.end em{font-style:normal;color:var(--orange)}
+.board{display:inline-flex;margin:34px 0 14px;gap:clamp(4px,.5vw,8px);padding:clamp(8px,1vw,14px);background:#050506;border-radius:12px;box-shadow:inset 0 0 0 1px #222,0 30px 80px -30px rgba(0,0,0,.9);position:relative;justify-self:start;max-width:100%}
+.board::before{content:"NOW FIXING";position:absolute;top:-22px;left:2px;font:500 12px var(--mono);letter-spacing:.2em;color:var(--orange)}
+.cell{position:relative;width:clamp(30px,5.2vw,88px);height:clamp(46px,7.6vw,128px);perspective:400px;font:700 clamp(30px,5.6vw,96px)/1 var(--display);color:#F5F2EE}
+.cell span{position:absolute;left:0;right:0;height:50%;overflow:hidden;background:linear-gradient(#1c1c20,#151518);display:block}
+.cell span b{position:absolute;left:0;right:0;height:200%;display:flex;align-items:center;justify-content:center;font-weight:700}
+.cell .t,.cell .ft{top:0;border-radius:6px 6px 0 0}
+.cell .b,.cell .fb{bottom:0;border-radius:0 0 6px 6px;background:linear-gradient(#141417,#18181b)}
+.cell .t b,.cell .ft b{top:0}
+.cell .b b,.cell .fb b{bottom:0}
+.cell::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#050506;z-index:3}
+.cell .ft{transform-origin:50% 100%;z-index:2;backface-visibility:hidden;display:none}
+.cell .fb{transform-origin:50% 0;z-index:2;backface-visibility:hidden;display:none}
+.cell.go .ft{display:block;animation:ftop 70ms ease-in both}
+.cell.go .fb{display:block;animation:fbot 70ms ease-out 70ms both}
+@keyframes ftop{to{transform:rotateX(-90deg)}}
+@keyframes fbot{from{transform:rotateX(90deg)}to{transform:rotateX(0)}}
+.lead{margin-top:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.dep{position:absolute;right:var(--pad);top:50%;transform:translateY(-30%);width:min(390px,30vw);font:500 14px/1 var(--mono);color:var(--mute);letter-spacing:.06em}
+.dep table{width:100%;border-collapse:collapse}
+.dep th{text-align:left;color:var(--orange);font-weight:500;padding:0 0 10px;border-bottom:1px solid var(--line)}
+.dep td{padding:11px 0;border-bottom:1px solid #1d1d21;color:#d9d5d0}
+.dep td:last-child{text-align:right;color:#7bd88f}
+@media (max-width:1100px){.dep{display:none}}
+@media (max-width:760px){.hero{padding-top:110px;gap:22px;align-content:start}.board::before{top:-20px}}
+</style>
+<script>document.documentElement.className+=' js'</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="fm-head"><a class="logo" href="#" aria-label="Finesse Marketing home"><img src="assets/fm-refresh-horizontal-reversed.svg" alt="Finesse Marketing" width="152" height="30"></a>
+<nav class="fm-nav" aria-label="Main"><a href="#">Services</a><a href="#">Work</a><a href="#">About</a><a class="btn btn-primary" href="#">Start an enquiry</a></nav></header>
+<main id="main">
+<section class="hero">
+  <p class="eyebrow">Senior marketing · Toowoomba</p>
+  <h1><span class="line">I fix the</span><span class="sr"> tracking, ads, websites and numbers </span>
+    <span class="board" aria-hidden="true" id="board"></span>
+    <span class="line end" style="display:block"><em>others got wrong.</em></span></h1>
+  <p class="lead">I'm John Hewitt. When the numbers don't add up or the campaigns have stalled, I find out why and put it right: strategy, paid ads, websites and AI automation, with a straight answer every time.</p>
+  <div class="ctas"><a class="btn btn-primary" href="#">Start an enquiry</a><a class="btn btn-ghost" href="#">See the work</a></div>
+  <div class="dep" aria-hidden="true"><table><tr><th>Destination</th><th style="text-align:right">Status</th></tr>
+    <tr><td>More enquiries</td><td>On time</td></tr><tr><td>Numbers you trust</td><td>Boarding</td></tr><tr><td>Less wasted spend</td><td>On time</td></tr><tr><td>AI doing the dull bits</td><td>Boarding</td></tr></table></div>
+</section>
+</main>
+<div class="mock-tag">Mock-up, sample words</div>
+<script>
+(()=>{
+  const WORDS=['TRACKING','ADS','WEBSITE','NUMBERS','FUNNEL','REPORTS'],N=8,CH=' ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const board=document.getElementById('board');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cells=[];
+  for(let i=0;i<N;i++){const c=document.createElement('span');c.className='cell';c.innerHTML='<span class="t"><b></b></span><span class="b"><b></b></span><span class="ft"><b></b></span><span class="fb"><b></b></span>';board.appendChild(c);cells.push({el:c,ch:' '});}
+  function show(cell,ch){cell.el.querySelectorAll('b').forEach(b=>b.textContent=ch);cell.ch=ch}
+  function pad(w){const s=Math.floor((N-w.length)/2);return (' '.repeat(s)+w).padEnd(N,' ')}
+  function flipStep(cell,next){
+    const [t,b,ft,fb]=cell.el.querySelectorAll('b');
+    ft.textContent=cell.ch;b.textContent=cell.ch;t.textContent=next;fb.textContent=next;
+    cell.el.classList.remove('go');void cell.el.offsetWidth;cell.el.classList.add('go');
+    setTimeout(()=>{b.textContent=next},140);cell.ch=next;
+  }
+  function flipTo(cell,target,delay){
+    return new Promise(res=>{setTimeout(function step(){
+      if(cell.ch===target){res();return}
+      const i=CH.indexOf(cell.ch),n=CH[(i+1)%CH.length];flipStep(cell,n);setTimeout(step,150);
+    },delay)});
+  }
+  let k=0;
+  function go(w){const p=pad(w);return Promise.all(cells.map((c,i)=>reduce?(show(c,p[i]),0):flipTo(c,p[i],i*60)))}
+  cells.forEach((c,i)=>show(c,pad(WORDS[0])[i]));
+  if(reduce)return;
+  async function loop(){await new Promise(r=>setTimeout(r,1800));k=(k+1)%WORDS.length;await go(WORDS[k]);loop()}
+  addEventListener('load',loop);
+})();
+</script>
+<a href="./" style="position:fixed;left:10px;bottom:10px;z-index:91;font:500 13px/1 system-ui,sans-serif;background:rgba(0,0,0,.7);color:#eee;padding:9px 12px;border-radius:999px;text-decoration:none">&larr; All ideas</a>
+</body>
+</html>
