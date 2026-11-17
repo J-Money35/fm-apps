@@ -37,6 +37,8 @@
 @keyframes drift{to{background-position:160px 128px}}
 @media (prefers-reduced-motion:reduce){.js .old{animation:none}}
 .js .old.gone{display:none}
+.js .old.tvoff{animation:tvoff 1.2s cubic-bezier(.7,0,.3,1) forwards!important;transform-origin:50% 50%;overflow:hidden}
+@keyframes tvoff{0%{transform:none;filter:none;opacity:1}8%{transform:translate(-10px,3px) skewX(6deg);filter:hue-rotate(120deg) saturate(4) contrast(1.5)}16%{transform:translate(12px,-4px) skewX(-8deg);filter:invert(1)}24%{transform:translate(-4px,0) scale(1.03);filter:hue-rotate(-90deg) saturate(5)}34%{transform:none;filter:brightness(1.8) contrast(2.2)}62%{transform:scale(1,.006);filter:brightness(5)}84%{transform:scale(.003,.006);filter:brightness(8);opacity:1}100%{transform:scale(0,0);filter:brightness(10);opacity:0}}
 .skip96{position:absolute;left:8px;top:8px;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;z-index:5;background:#ff0;color:#000;font:bold 14px Arial}
 .skip96:focus{width:auto;height:auto;padding:8px 12px;clip-path:none}
 .w{max-width:1180px;margin:0 auto;padding:12px 14px 90px;display:grid;grid-template-columns:210px minmax(0,1fr) 230px;gap:10px}
@@ -375,7 +377,7 @@
         <p>&#8220;He said we would be Number One on Google. When we did an exact match Google search on our name, there we were. Right towards the top, just like he said.&#8221;<br><b>~ Lower Range Pony &amp; Hobby Horse Club</b></p>
         <p>&#8220;Our meat raffle has never been more data-driven. Thank you, Jon.&#8221;<br><b>~ Eastside Bowls Club</b></p>
         <p>&#8220;We asked for a logo, a website and a marketing strategy. We received a &#8220;Funnel&#8221;. We are still not sure what it does, but it is ours for just $140 a month. And we now have the best Tech Stack in Toowoomba!!&#8221;<br><b>~ Pete's Plumbing</b></p>
-        <p>&#8220;He explained Google AdWords to me for two hours. I still do not know what it is, but apparently I am Number One at certain times on certain devices. I believe John has the greatest of all the Tech Stacks. This is what I am led to believe.&#8221;<br><b>~ Dr. Ahmed Salamat</b></p></div>
+        <p>&#8220;He explained Google AdWords to me for 6.5 hours. I still do not know what it is, but apparently I am Number One at certain times on certain devices. I believe John has the greatest of all the Tech Stacks. This is what I am led to believe.&#8221;<br><b>~ Dr. Ahmed Salamat</b></p></div>
       <div class="box"><h3>Our Values</h3><p class="mission" style="font-style:normal;font-weight:bold">Integrity. excellence. Integrity (it is that important). Synergy. Values.<br><span style="font-weight:normal;font-size:14px">We value our Values. Its as simple as that.<br>Im done explaning myself to all the haters .</span></p></div>
       <div class="box rant" id="johnRant"><h3>A Message From John: Why We Will NEVER Use A.I. Slop</h3>
         <p class="gpt">Certainly! Here is a heartfelt, authentic rant about A.I. slop for your business website:</p>
@@ -609,6 +611,7 @@
   function closePops(){document.querySelectorAll('.pop').forEach(p=>p.hidden=true)}
   function finish(){state='done';closePops();old.classList.add('gone');de.classList.remove('oldon','unlocked','peeling');cx.clearRect(0,0,W,H);P=null;board.classList.remove('struck');void board.offsetWidth;board.classList.add('struck')}
   function peelAll(ms){state='peeling';de.classList.add('peeling');tween([-W*1.05,-H*1.05],ms,easeInOut,finish)}
+  function tvOff(){state='peeling';closePops();old.classList.add('tvoff');setTimeout(()=>{old.classList.toggle('tvoff',false);finish()},1250)}
   function unlock(){if(state!=='flat')return;state='hint';closePops();de.classList.add('unlocked');tween([W-78,H-64],reduce?0:650,easeOut);ear.focus({preventScroll:true})}
   /* ---------- the ways in ---------- */
   // 1. secret: click the logo three times
@@ -619,8 +622,8 @@
   function pop(el,key){if(state!=='flat'||shown[key]||!document.querySelectorAll('.pop:not([hidden])').length===false)return;shown[key]=true;el.hidden=false;el.querySelector('.bt button').focus({preventScroll:true})}
   [popPrize,popBottom,document.getElementById('popFav')].forEach(el=>el.querySelector('.px').addEventListener('click',()=>{el.hidden=true;setTimeout(()=>{if(state==='flat'||el.id==='popFav'){el.hidden=false;el.querySelector('.bt button').focus({preventScroll:true})}},reduce?60:220)}));
   [popPrize,popBottom,document.getElementById('popFav')].forEach(el=>el.querySelectorAll('.bt button').forEach(b=>b.addEventListener('click',()=>{
-    if(b.dataset.a==='toobad'){const bd=el.querySelector('.bd p'),bt=el.querySelector('.bt');bt.style.display='none';let n=3;bd.innerHTML='<b>Too bad.</b> You are seeing it anyway.<br><br>Peeling in <b class="cd">3</b>...';
-      const iv=setInterval(()=>{n--;if(n>0){bd.querySelector('.cd').textContent=n;return}clearInterval(iv);el.hidden=true;unlock();setTimeout(()=>peelAll(1400),reduce?0:700)},1000);return}
+    if(b.dataset.a==='toobad'){const bd=el.querySelector('.bd p'),bt=el.querySelector('.bt');bt.style.display='none';let n=3;bd.innerHTML='<b>Too bad.</b> You are seeing it anyway.<br><br>Sending you in <b class="cd">3</b>...';
+      const iv=setInterval(()=>{n--;if(n>0){bd.querySelector('.cd').textContent=n;return}clearInterval(iv);el.hidden=true;tvOff()},1000);return}
     if(el===popPrize&&b.dataset.a==='yes'){const bd=el.querySelector('.bd p');bd.innerHTML='<b>CONGRATULATIONS!!!</b><br>Your prize is a <b>FREE Clarity Call</b>?!<br>(valued at $499.95)<br><br>Our Chatbot will be in touch with you soon to line up a call.';const bt=el.querySelector('.bt');bt.innerHTML='<button type="button">OK</button>';bt.querySelector('button').addEventListener('click',()=>{el.hidden=true});bt.querySelector('button').focus({preventScroll:true});return}
     el.hidden=true;if(b.dataset.a==='yes')unlock()})));
   setTimeout(()=>pop(popPrize,'prize'),22000);
