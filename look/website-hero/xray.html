@@ -149,7 +149,9 @@ h1 em{font-style:normal;color:var(--orange)}
     f.addEventListener('pointerleave',()=>{mode='auto';t0=performance.now()-2000});
     new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible&&!raf)raf=requestAnimationFrame(tick)}).observe(f);
   }else{
-    f.addEventListener('click',e=>{const b=f.getBoundingClientRect();x=e.clientX-b.left;y=Math.max(34,e.clientY-b.top);set()});
+    // motion turned off: no drifting or easing, but the lens still follows the visitor's own pointer exactly
+    f.addEventListener('pointermove',e=>{const b=f.getBoundingClientRect();x=tx=e.clientX-b.left;y=ty=Math.max(34,e.clientY-b.top);set()});
+    f.addEventListener('pointerdown',e=>{const b=f.getBoundingClientRect();x=tx=e.clientX-b.left;y=ty=Math.max(34,e.clientY-b.top);set()});
   }
   btn.addEventListener('click',()=>{const on=btn.getAttribute('aria-pressed')!=='true';btn.setAttribute('aria-pressed',on);f.classList.toggle('full',on);});
 })();
