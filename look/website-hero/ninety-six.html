@@ -110,6 +110,9 @@
 .rpg .menu{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(#2a3fd6,#0b1470);border:3px solid #fff;outline:2px solid #000;border-radius:6px;padding:12px;color:#fff;font:bold 14px/1.35 "Courier New",monospace;text-shadow:1px 1px 0 #000}
 .rpg img{image-rendering:pixelated;flex:none;background:radial-gradient(circle at 50% 70%,rgba(255,255,255,.18),transparent 70%)}
 .rpg .st{flex:1;min-width:0}
+.rpg .kcol{display:flex;flex-direction:column;align-items:center;gap:8px;flex:none}
+.rpg .slop img{display:block;border:3px solid #fff;outline:2px solid #000;image-rendering:auto}
+.rpg .slop figcaption{font:10px Arial;color:#cfe;text-align:center;margin-top:3px}
 .rpg .nm{font-size:18px}.rpg .nm span{color:#ffd200;margin-left:8px}
 .rpg .cl{color:#9fe8ff}
 .rpg ul{list-style:none;margin-top:6px}
@@ -325,7 +328,7 @@
         <div><img data-sprite="john" alt="" width="72" height="90" title="John Hewitt (centre, left and right)">John Hewitt<br><b>Owner/Founder</b></div></div>
         <p style="text-align:center;font:13px Arial;margin-top:8px"><b>Employee of the Month:</b> John Hewitt (47 months running). "A real team player," says John Hewitt.<br>Last Friday the whole team did a trust fall. We do not recommend it for teams of one.</p></div>
       <div class="box rpg"><h3>John's Stats</h3>
-        <div class="menu"><img data-sprite="knight" alt="Pixel art of John Hewitt as a knight with a bullseye shield" width="136" height="192" title="John Hewitt, Marketing Knight (Level 99)">
+        <div class="menu"><div class="kcol"><figure class="slop"><img src="assets/slop_knight.webp" alt="A.I. artwork of John Hewitt as a heroic knight" width="136" height="204" title="Artist's impression (A.I.)"><figcaption>Artist's impression (A.I.)</figcaption></figure><img data-sprite="knight" alt="Pixel art of John Hewitt as a knight with a bullseye shield" width="136" height="192" title="John Hewitt, Marketing Knight (Level 99)"></div>
         <div class="st"><p class="nm">JOHN <span>LV 99</span></p><p class="cl">Class: Marketing Knight</p><p>HP 9999/9999 &nbsp; MP 999/999</p>
         <p class="sec">BASE STATS</p>
         <ul class="base"><li>Strength<i class="over"></i>102</li><li>Synergy<i></i>100</li><li>Humility<i></i>100</li><li>A.I./S.I.<i></i>100</li><li>Hustle<i></i>100</li><li>Charisma<i></i>100</li><li>Vision<i></i>100</li></ul>
